@@ -513,7 +513,15 @@ var Helper = {
 				//默认为[data-hot-key]
 				_target = $("[data-hot-key]");
 			}
-			if (_target && _target.length){
+			var _hotKeyFunction = [];
+			if (callback instanceof Function && typeof(config) == "string"){
+				_hotKeyFunction.push({});
+				_hotKeyFunction[0]["hotKey"] = config;
+				_hotKeyFunction[0]["method"] = callback;
+			}else if (config instanceof Array){
+				_hotKeyFunction = config;
+			}
+			if (_target && _target.length || _hotKeyFunction.length){
 				if (ev.type == "keydown"){
 					//热键简写值
 					var _shorthand = {
@@ -526,42 +534,46 @@ var Helper = {
 					}
 					//用作保存页面存在的所有热键值
 					var _keyAll = [];
-					var _hotKeyObj = [];
-					_target.each(function(){
-						if ($(this).is(":visible")){
-							var _this = $(this);
-							var _keys = _this.attr("data-hot-key") || "";
-								_keys = _keys.split("+");
-							var k = 0;
-							_keys.forEach(function(item,i){
-								item = item.trim().toLowerCase();	//去除空格并转成小写
-								//如果有简写键值,转换并重新赋值,再做比较
-								if (_shorthand[item]){
-									item = _shorthand[item].toLowerCase();
+					if (_hotKeyFunction.length){
+						//...
+					}else{
+						var _hotKeyObj = [];
+						_target.each(function(){
+							if ($(this).is(":visible")){
+								var _this = $(this);
+								var _keys = _this.attr("data-hot-key") || "";
+									_keys = _keys.split("+");
+								var k = 0;
+								_keys.forEach(function(item,i){
+									item = item.trim().toLowerCase();	//去除空格并转成小写
+									//如果有简写键值,转换并重新赋值,再做比较
+									if (_shorthand[item]){
+										item = _shorthand[item].toLowerCase();
+									}
+									if (item == ev.key.toLowerCase() || ev[item + "Key"] === true){
+										k++;
+									}
+									//将所有的热键值保存起来用作判断
+									_keyAll.push(item);
+								});
+								//若热键数量满足,则激活焦点并执行单击事件
+								if (k == _keys.length){
+									_hotKeyObj.push(_this);
 								}
-								if (item == ev.key.toLowerCase() || ev[item + "Key"] === true){
-									k++;
-								}
-								//将所有的热键值保存起来用作判断
-								_keyAll.push(item);
-							});
-							//若热键数量满足,则激活焦点并执行单击事件
-							if (k == _keys.length){
-								_hotKeyObj.push(_this);
 							}
-						}
-					});
-					//每次只执行最后一个(比如有两个弹窗,有设置了enter热键,则从后往前执行)
-					if (_hotKeyObj.length){
-						var _obj = _hotKeyObj[_hotKeyObj.length-1];
-						if (_obj.attr("data-hotkey-trigger")){
-							//热键触发自定义事件
-							_obj.attr("data-hotkey-trigger").split(" ").forEach(function(item){
-								_obj.trigger(item);
-							})
-						}else{
-							//热键触发默认事件
-							_obj.focus().trigger("click");
+						});
+						//每次只执行最后一个(比如有两个弹窗,有设置了enter热键,则从后往前执行)
+						if (_hotKeyObj.length){
+							var _obj = _hotKeyObj[_hotKeyObj.length-1];
+							if (_obj.attr("data-hotkey-trigger")){
+								//热键触发自定义事件
+								_obj.attr("data-hotkey-trigger").split(" ").forEach(function(item){
+									_obj.trigger(item);
+								})
+							}else{
+								//热键触发默认事件
+								_obj.focus().trigger("click");
+							}
 						}
 					}
 				}
