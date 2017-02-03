@@ -907,6 +907,7 @@ Helper.tip({
 				<div>
 					<div>
 						<button class="hot-key" data-hot-key="Ctrl+K">弹出轻提示(Ctrl+K)</button>
+						<button class="hot-key" data-hot-key="Ctrl+Alt+N">弹出轻提示(Ctrl+Alt+N)</button>
 						<div>通过设置：data-hot-key="Enter"（设置组合热键）；</div>
 						<div>通过设置：data-hotkey-trigger="dblclick keyup"（自定被激活的事件）</div>
 						<div>然后调用：Helper.hotKey("指定DOM对象");</div>
@@ -918,12 +919,12 @@ Helper.hotKey();
 Helper.hotKey(".hot-key");
 <div style="opacity: .5;">//相关事件代码（默认click 和 focus）
 $(document).on("click",".hot-key",function(){
-    Helper.tip("轻提示(Ctrl+K)");
+    Helper.tip('轻提示(' + $(this).attr("data-hot-key") + ')');
 });</div></div>
 				</div>
 				<script type="text/javascript">
 					$(document).on("click",".hot-key",function(){
-						Helper.tip("轻提示(Ctrl+K)");
+						Helper.tip('轻提示(' + $(this).attr("data-hot-key") + ')');
 					});
 					Helper.hotKey();
 				</script>
@@ -1144,37 +1145,37 @@ Helper.focusMove({
 								<div>rowLabel</div>
 								<div>string</div>
 								<div>tr</div>
-								<div>行标签名</div>
+								<div>行标签名（target是table时可省略）</div>
 							</li>
 							<li>
 								<div>cellLabel</div>
 								<div>string</div>
 								<div>td</div>
-								<div>单元格标签名</div>
+								<div>单元格标签名（target是table时可省略）</div>
 							</li>
 							<li>
 								<div>inputLabel</div>
 								<div>string</div>
 								<div>input:enabled</div>
-								<div>焦点对象</div>
+								<div>焦点对象（默认可省略...）</div>
 							</li>
 							<li>
 								<div>visualPosition</div>
 								<div>boolean</div>
 								<div>false</div>
-								<div>是否开启视觉定位</div>
+								<div>是否开启视觉定位(位置不规则时很有效)</div>
 							</li>
 							<li>
 								<div>minTop</div>
 								<div>number</div>
 								<div>0</div>
-								<div>至少隔顶部位置</div>
+								<div>至少隔顶部位置（防止被浮动层挡住）</div>
 							</li>
 							<li>
 								<div>minBottom</div>
 								<div>string</div>
 								<div>0</div>
-								<div>至少隔底部位置</div>
+								<div>至少隔底部位置（防止被浮动层挡住）</div>
 							</li>
 							<li>
 								<div>callback</div>

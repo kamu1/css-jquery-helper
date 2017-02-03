@@ -17,6 +17,7 @@ $blockMargin:16px;
     overflow: auto;
     transform: translateX(95%);
     transition-duration: 600ms;
+    box-shadow: -1px 0 5px rgba(0,0,0,.5);
     &:after{
         content:"";
         border: 8px solid transparent;
