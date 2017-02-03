@@ -1,0 +1,177 @@
+@charset "UTF-8";
+.main-menu {
+  position: fixed;
+  top: 0;
+  right: 0;
+  z-index: 2;
+  background: #FFFFFF;
+  height: 100%;
+  white-space: nowrap;
+  font-size: 17px;
+  line-height: 1.6em;
+  padding: 1em;
+  border-left: 1px solid #DDD;
+  overflow: auto;
+  transform: translateX(95%);
+  transition-duration: 600ms; }
+  .main-menu:after {
+    content: "";
+    border: 8px solid transparent;
+    border-right-color: #CCCCCC;
+    border-left: none;
+    position: absolute;
+    top: 50%;
+    left: 5px;
+    margin-top: -8px; }
+  .main-menu:hover {
+    transform: translateX(0%);
+    transition-duration: 200ms; }
+    .main-menu:hover:after {
+      display: none; }
+  .main-menu ul {
+    font-size: 13px;
+    margin-left: 2em; }
+
+.main-navigation:before {
+  content: attr(data-title);
+  display: block;
+  font-weight: bold;
+  font-size: 18px;
+  margin-left: 16px;
+  padding-top: 8px; }
+
+.child-navigation {
+  background: #eeeeee;
+  margin: 16px;
+  overflow: hidden;
+  border-radius: 3px;
+  position: relative; }
+  .child-navigation:before {
+    content: attr(data-title) "　";
+    display: block;
+    font-size: 16px;
+    margin-left: 16px;
+    margin-top: 8px; }
+  .child-navigation > div {
+    border-radius: 3px;
+    margin: 8px;
+    background: #FFFFFF;
+    overflow: hidden; }
+    .child-navigation > div > * {
+      margin: 8px;
+      padding-top: 8px;
+      border-top: 1px dotted #ddd; }
+      .child-navigation > div > *:first-child {
+        border-top: none;
+        padding-top: 0; }
+  .child-navigation > input[type=checkbox] {
+    display: none; }
+    .child-navigation > input[type=checkbox] + label {
+      position: absolute;
+      top: 8px;
+      right: 8px;
+      cursor: pointer;
+      font-size: 12px;
+      font-weight: normal;
+      padding: .6em 1em; }
+      .child-navigation > input[type=checkbox] + label:after {
+        content: "展开代码"; }
+      .child-navigation > input[type=checkbox] + label + * > .demo-code {
+        display: none; }
+    .child-navigation > input[type=checkbox]:checked + label {
+      background: #FFFFFF;
+      border-radius: 4px 4px 0 0; }
+      .child-navigation > input[type=checkbox]:checked + label:after {
+        content: "收起代码";
+        color: #999999; }
+      .child-navigation > input[type=checkbox]:checked + label + * .demo-code {
+        display: block; }
+
+.demo-code {
+  white-space: pre;
+  overflow: auto;
+  color: #888888;
+  font-size: 13px;
+  line-height: 1.7em;
+  max-height: 34em; }
+
+.demo-attr-list {
+  overflow: hidden; }
+  .demo-attr-list .cmn-table {
+    font-size: 12px; }
+    .demo-attr-list .cmn-table > * > * {
+      padding: 6px; }
+      .demo-attr-list .cmn-table > * > * .demo-code {
+        height: 1.8em;
+        overflow: hidden;
+        position: relative;
+        padding-left: 1.2em; }
+        .demo-attr-list .cmn-table > * > * .demo-code:after {
+          content: "";
+          position: absolute;
+          left: 0;
+          top: 10px;
+          border: 5px solid transparent;
+          border-top-color: #CCCCCC; }
+      .demo-attr-list .cmn-table > * > *:hover .demo-code {
+        height: auto; }
+
+.css-cmn-middle > * {
+  display: inline-block;
+  width: 150px;
+  height: 100px;
+  background: #EEEEEE;
+  margin-right: 1em; }
+.css-cmn-middle .cmn-middle * {
+  text-align: center; }
+
+.css-cmn-position > * {
+  display: inline-block;
+  width: 160px;
+  height: 130px;
+  background: #EEE;
+  margin-right: 1em;
+  margin-bottom: 3px; }
+  .css-cmn-position > * > span {
+    border: 1px solid #999999;
+    background: #DDDDDD;
+    width: 8em;
+    height: 1.6em; }
+.css-cmn-position .cmn-position > *.cmn-middle {
+  height: 150%;
+  width: 80%; }
+.css-cmn-position .cmn-position * {
+  font-size: 12px;
+  text-align: center !important; }
+
+.css-cmn-proportion {
+  font-size: 12px;
+  resize: horizontal;
+  width: 900px;
+  overflow: hidden;
+  border: 1px solid #CCCCCC; }
+  .css-cmn-proportion ul {
+    overflow: hidden; }
+    .css-cmn-proportion ul li {
+      float: left;
+      width: 13%;
+      margin-right: 10px;
+      background: #EEE; }
+  .css-cmn-proportion .cmn-1-1 {
+    background: #EEEEEE;
+    margin-bottom: 1em; }
+
+.css-cmn-float .cmn-float > * {
+  min-height: 100px;
+  min-width: 180px;
+  line-height: 100px;
+  text-align: center; }
+  .css-cmn-float .cmn-float > *:first-child {
+    background: #EEE; }
+    .css-cmn-float .cmn-float > *:first-child + * {
+      background: #EEE; }
+  .css-cmn-float .cmn-float > * * {
+    text-align: center;
+    background: #DDDDDD; }
+
+/*# sourceMappingURL=demo.css.map */

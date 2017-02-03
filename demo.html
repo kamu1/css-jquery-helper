@@ -1,0 +1,1247 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Demo示例</title>
+		<!--公用样式-->
+		<link rel="stylesheet" type="text/css" href="./css/common/common.css" />
+		<link rel="stylesheet" type="text/css" href="./css/common/dialog/dialog-kuaixiao.css" />
+		
+		<link rel="stylesheet" type="text/css" href="./css/common/demo.css" />
+		<!--jQuery 插件-->
+		<script src="./js/plugin/jquery/jquery.min.js"></script>
+		<!--bootstrap 插件-->
+		<link rel="stylesheet" href="./js/plugin/bootstrap/bootstrap.min.css">
+		<script src="./js/plugin/bootstrap/bootstrap.min.js"></script>
+		<!--多项下拉选择框 插件-->
+		<link rel="stylesheet" type="text/css" href="./js/plugin/bootstrap/bootstrap-select.min.css" />
+		<script src="./js/plugin/bootstrap/bootstrap-select.min.js"></script>
+		<!--artTemplate 模板引擎-->
+		<script src="./js/plugin/template/artTemplate.min.js"></script>
+		<!--辅助插件，弹窗，轻提示等-->
+		<script src="./js/common/helper.js"></script>
+	</head>
+	<body>
+		<!--菜单导航-->
+		<ul class="main-menu cmn-none">
+		</ul>
+		<!--项目开始-->
+		<div class="main-navigation" data-title="common.css">
+			<div class="child-navigation J-child-navigation" data-title="内置margin值">
+				<div>
+					<div>
+						<div>为方便重写样式，不被CSS优先级困扰，这里内置以下margin值供demo使用；</div>
+						<div>margin值：-20，-15，-10，-5，0，5，10，15，20；</div>
+						<div>css前缀：.cmn-m*，.cmn-mtb*，.cmn-mlr*，.cmn-mt*，.cmn-mb*，.cmn-ml*，.cmn-mr*；</div>
+						<div>如：.cmn-m<b class="cmn-red">10</b>，.cmn-mlr<b class="cmn-red">-20</b>；</div>
+						<div>如果demo中存在此样式不符合设计稿需求，可删除.cmn-m*自定重写或直接覆盖</div>
+					</div>
+				</div>
+			</div>
+			<div class="child-navigation J-child-navigation" data-title="清除默认样式">
+				<input type="checkbox" />
+				<label></label>
+				<div>
+					<div>
+						引用class为.cmn-none即可，会清除list-style、margin、padding、text-decoration、font-style、font-weight、background-color、border样式；
+					</div>
+					<div class="demo-code">&lt;ul class="cmn-none"&gt;&lt;li&gt;会去掉list-style、margin、padding&lt;/li&gt;&lt;/ul&gt;
+&lt;ol class="cmn-none"&gt;&lt;li&gt;item&lt;/li&gt;&lt;/ol&gt;
+&lt;h1 class="cmn-none"&gt;会去掉默认margin&lt;/h1&gt;
+&lt;p class="cmn-none"&gt;会去掉默认margin&lt;/p&gt;
+&lt;u class="cmn-none"&gt;会去下划线&lt;/u&gt;
+&lt;b class="cmn-none"&gt;会去除加粗&lt;/b&gt;
+&lt;i class="cmn-none"&gt;会去掉斜体&lt;/i&gt;
+&lt;button class="cmn-none"&gt;会去掉默认背景和边框&lt;/button&gt;</div>
+				</div>
+			</div>
+			<div class="child-navigation J-child-navigation" data-title="伪类清除float浮动">
+				<input type="checkbox" />
+				<label></label>
+				<div>
+					<div>
+						<div class="cmn-clear">清除左右浮动：.cmn-clear</div>
+						<div class="cmn-clear-left">清除左浮动：.cmn-clear-left</div>
+						<div class="cmn-clear-right">清除右浮动：.cmn-clear-right</div>
+					</div>
+					<div class="demo-code">&lt;ul class="cmn-clear"&gt;&lt;li style="float:left"&gt;清除左右浮动&lt;/li&gt;&lt;/ul&gt;
+&lt;ul class="cmn-clear-left"&gt;&lt;li&gt;清除左浮动&lt;/li&gt;&lt;/ul&gt;
+&lt;ul class="cmn-clear-right"&gt;&lt;li&gt;清除右浮动&lt;/li&gt;&lt;/ul&gt;
+&lt;!-- 也可通过overflow:hidden清除浮动,但此方法会隐藏内容溢出部分 --&gt;
+&lt;ul style="overflow:hidden"&gt;&lt;li&gt;清除浮动&lt;/li&gt;&lt;/ul&gt;</div>
+				</div>
+			</div>
+			<div class="child-navigation J-child-navigation" data-title="页面加载效果">
+				<input type="checkbox" />
+				<label></label>
+				<div>
+					<div>
+						<span class="cmn-btn cmn-loading">加载中...</span><br /><br />
+						<button class="cmn-loading">加载中按钮...</button><br /><br />
+						<div class="cmn-loading" style="height: 60px;width:200px;border:1px solid #DDDDDD;"></div>
+					</div>
+					<div class="demo-code">&lt;!--直接加上样式.cmn-loading：body、button、.cmn-btn、div等样式呈现位置不一样，请自行测试--&gt;
+						
+&lt;!--body引用会在整个页面居中呈现--&gt;
+&lt;body class="cmn-loading"&gt;
+
+&lt;span class="cmn-btn cmn-loading"&gt;加载中(.cmn-btn)&lt;/span&gt;
+&lt;button class="cmn-loading"&gt;加载中按钮...&lt;/button&gt;
+&lt;div class="cmn-loading" style="height: 60px;width:100px;border:1px solid #DDDDDD;"&gt;&lt;/div&gt;</div>
+				</div>
+			</div>
+			<div class="child-navigation J-child-navigation" data-title="复选框">
+				<input type="checkbox" />
+				<label for=""></label>
+				<div>
+					<div>
+						<label><input type="checkbox" class="cmn-checkbox" /><s></s><span>checkbox</span></label>
+						<label><input type="checkbox" class="cmn-checkbox" checked="" /><s></s><span>checkbox</span></label>
+						<label><input type="checkbox" class="cmn-checkbox" disabled="" /><s></s><span>checkbox</span></label>
+						<label><input type="checkbox" class="cmn-checkbox" disabled="" checked="" /><s></s><span>checkbox</span></label>
+					</div>
+					<div class="demo-code">&lt;label&gt;&lt;input type="checkbox" class="cmn-checkbox" /&gt;&lt;s&gt;&lt;/s&gt;&lt;span&gt;checkbox&lt;/span&gt;&lt;/label&gt;
+&lt;label&gt;&lt;input type="checkbox" class="cmn-checkbox" checked="" /&gt;&lt;s&gt;&lt;/s&gt;&lt;span&gt;checkbox&lt;/span&gt;&lt;/label&gt;
+&lt;label&gt;&lt;input type="checkbox" class="cmn-checkbox" disabled="" /&gt;&lt;s&gt;&lt;/s&gt;&lt;span&gt;checkbox&lt;/span&gt;&lt;/label&gt;
+&lt;label&gt;&lt;input type="checkbox" class="cmn-checkbox" disabled="" checked="" /&gt;&lt;s&gt;&lt;/s&gt;&lt;span&gt;checkbox&lt;/span&gt;&lt;/label&gt;
+/* 复选框样式重写：可用未选中 */
+body label input.cmn-checkbox[type=checkbox] + s { background-image:url(); }
+/* 复选框样式重写：可用被选中  */
+body label input.cmn-checkbox[type=checkbox]:checked + s { background-image:url(); }
+/* 复选框样式重写：不可用未选中  */
+body label input.cmn-checkbox[type=checkbox]:disabled + s { background-image:url(); }
+/* 复选框样式重写：不可用被选中  */
+body label input.cmn-checkbox[type=checkbox]:disabled:checked + s { background-image:url(); }</div>
+				</div>
+			</div>
+			<div class="child-navigation J-child-navigation" data-title="单选框">
+				<input type="checkbox" />
+				<label></label>
+				<div>
+					<div>
+						<label><input type="radio" class="cmn-checkbox" name="r" /><s></s><span>radio</span></label>
+						<label><input type="radio" class="cmn-checkbox" name="r" checked="" /><s></s><span>radio</span></label>
+						<label><input type="radio" class="cmn-checkbox" name="r" disabled="" /><s></s><span>radio</span></label>
+						<label><input type="radio" class="cmn-checkbox" name="t" disabled="" checked="" /><s></s><span>radio</span></label>
+					</div>
+					<div class="demo-code">&lt;label&gt;&lt;input type="radio" name="r" class="cmn-checkbox" /&gt;&lt;s&gt;&lt;/s&gt;&lt;span&gt;radio&lt;/span&gt;&lt;/label&gt;
+&lt;label&gt;&lt;input type="radio" name="r" class="cmn-checkbox" checked="" /&gt;&lt;s&gt;&lt;/s&gt;&lt;span&gt;radio&lt;/span&gt;&lt;/label&gt;
+&lt;label&gt;&lt;input type="radio" name="r" class="cmn-checkbox" disabled="" /&gt;&lt;s&gt;&lt;/s&gt;&lt;span&gt;radio&lt;/span&gt;&lt;/label&gt;
+&lt;label&gt;&lt;input type="radio" name="t" class="cmn-checkbox" disabled="" checked="" /&gt;&lt;s&gt;&lt;/s&gt;&lt;span&gt;radio&lt;/span&gt;&lt;/label&gt;
+/* 单选框样式重写：可用未选中 */
+body label input.cmn-checkbox[type=radio] + s { background-image:url(); }
+/* 单选框样式重写：可用被选中 */
+body label input.cmn-checkbox[type=radio]:checked + s { background-image:url(); }
+/* 单选框样式重写：不可用未选中 */
+body label input.cmn-checkbox[type=radio]:disabled + s { background-image:url(); }
+/* 单选框样式重写：不可用被选中 */
+body label input.cmn-checkbox[type=radio]:disabled:checked + s { background-image:url(); }</div>
+				</div>
+			</div>
+			<div class="child-navigation J-child-navigation" data-title="按钮(含添加文件)">
+				<input type="checkbox" />
+				<label></label>
+				<div>
+					<div>
+						<span class="cmn-btn" style="padding: .5em 1em;">普通按钮</span>
+						<a class="cmn-btn" style="padding: .5em 1em;">链接按钮</a>
+						<button class="cmn-btn" style="padding: .5em 1em;">文件上传按钮<input type="file"/></button>
+					</div>
+					<div class="demo-code">&lt;span class="cmn-btn" style="padding: .5em 1em;"&gt;普通按钮&lt;/span&gt;
+&lt;a class="cmn-btn" style="padding: .5em 1em;"&gt;链接按钮&lt;/a&gt;
+&lt;button class="cmn-btn" style="padding: .5em 1em;"&gt;文件上传按钮&lt;input type="file"/&gt;&lt;/button&gt;</div>
+				</div>
+			</div>
+			<div class="child-navigation J-child-navigation" data-title="前景颜色">
+				<input type="checkbox" />
+				<label></label>
+				<div>
+					<div>
+						<div class="cmn-white" style="text-shadow:1px 1px 5px #000000">白色</div>
+						<div class="cmn-gray">灰色</div>
+						<div class="cmn-red">红色</div>
+						<div class="cmn-blue">蓝色</div>
+						<div class="cmn-green">绿色</div>
+						<div class="cmn-orange">橙色</div>
+						<div class="cmn-yellow">黄色</div>
+						<div class="cmn-purple">紫色</div>
+					</div>
+					<div class="demo-code">&lt;div class="cmn-white"&gt;白色&lt;/div&gt;
+&lt;div class="cmn-gray"&gt;灰色&lt;/div&gt;
+&lt;div class="cmn-red"&gt;红色&lt;/div&gt;
+&lt;div class="cmn-blue"&gt;蓝色&lt;/div&gt;
+&lt;div class="cmn-green"&gt;绿色&lt;/div&gt;
+&lt;div class="cmn-orange"&gt;橙色&lt;/div&gt;
+&lt;div class="cmn-yellow"&gt;黄色&lt;/div&gt;
+&lt;div class="cmn-purple"&gt;紫色&lt;/div&gt;</div>
+				</div>
+			</div>
+			<div class="child-navigation J-child-navigation" data-title="背景颜色">
+				<input type="checkbox" />
+				<label></label>
+				<div>
+					<div>
+						<div class="cmn-bg-white">白色背景</div>
+						<div class="cmn-bg-gray">灰色背景</div>
+						<div class="cmn-bg-red">红色背景</div>
+						<div class="cmn-bg-blue">蓝色背景</div>
+						<div class="cmn-bg-green">绿色背景</div>
+						<div class="cmn-bg-orange">橙色背景</div>
+						<div class="cmn-bg-yellow">黄色背景</div>
+						<div class="cmn-bg-purple">紫色背景</div>
+					</div>
+					<div class="demo-code">&lt;div class="cmn-white"&gt;白色背景&lt;/div&gt;
+&lt;div class="cmn-bg-gray"&gt;灰色背景&lt;/div&gt;
+&lt;div class="cmn-bg-red"&gt;红色背景&lt;/div&gt;
+&lt;div class="cmn-bg-blue"&gt;蓝色背景&lt;/div&gt;
+&lt;div class="cmn-bg-green"&gt;绿色背景&lt;/div&gt;
+&lt;div class="cmn-bg-orange"&gt;橙色背景&lt;/div&gt;
+&lt;div class="cmn-bg-yellow"&gt;黄色背景&lt;/div&gt;
+&lt;div class="cmn-bg-purple"&gt;紫色背景&lt;/div&gt;</div>
+				</div>
+			</div>
+			<div class="child-navigation J-child-navigation" data-title="补充文本内容（如价格符号“￥”）">
+				<input type="checkbox" />
+				<label></label>
+				<div>
+					<div>
+						<div before-content="$">99</div>
+						<div before-content="￥" class="cmn-red">99</div>
+						<div before-content="共" after-content="件" class="cmn-blue">77</div>
+					</div>
+					<div class="demo-code">&lt;div before-content="$"&gt;99&lt;/div&gt;
+&lt;div before-content="￥" class="cmn-red"&gt;99&lt;/div&gt;
+&lt;div before-content="共" after-content="件" class="cmn-blue"&gt;77&lt;/div&gt;</div>
+				</div>
+			</div>
+			<div class="child-navigation J-child-navigation" data-title="相对垂直居中（必须设置容器尺寸）">
+				<input type="checkbox" />
+				<label></label>
+				<div>
+					<div class="css-cmn-middle">
+						<div class="cmn-middle"><span>相对垂直居中<br />超出部分底部被截取</span></div>
+						<div class="cmn-middle-left"><span>相对垂直左居中</span></div>
+						<div class="cmn-middle-right"><span>相对垂直右居中</span></div>
+					</div>
+					<div class="demo-code">&lt;div class="cmn-middle"&gt;&lt;span&gt;相对垂直居中&lt;/span&gt;&lt;/div&gt;
+&lt;div class="cmn-middle-left"&gt;&lt;span&gt;相对垂直左居中&lt;/span&gt;&lt;/div&gt;
+&lt;div class="cmn-middle-right"&gt;&lt;span&gt;相对垂直右居中&lt;/span&gt;&lt;/div&gt;</div>
+				</div>
+			</div>
+			<div class="child-navigation J-child-navigation" data-title="绝对垂直居中（非图片居中需设置内部尺寸）">
+				<input type="checkbox" />
+				<label></label>
+				<div>
+					<div class="css-cmn-position">
+						<div class="cmn-position"><span class="cmn-middle"><span>绝对垂直居中<br />超出部分两头被截取<br />可换成竖图看看</span></span></div>
+						<div class="cmn-position"><img src="https://www.baidu.com/img/baidu_jgylogo3.gif" title="绝对垂直居中" /></div>
+						<div class="cmn-position">
+							<img src="http://pic.ffpic.com/files/2014/1122/1121mtfmmctzmx4bz3.jpg" title="绝对垂直居中" />
+							<img src="http://pic.ffpic.com/files/2014/1122/1121mtfmmctzmx4bz3.jpg" class="c-right-bottom" style="height: 50%;" />
+						</div>
+						<div class="cmn-position" style="width: 350px;">
+							<span>居中</span>
+							<span class="c-top">.c-top</span>
+							<span class="c-left">.c-left</span>
+							<span class="c-bottom">.c-bottom</span>
+							<span class="c-right">.c-right</span>
+							<span class="c-left-top">.c-left-top</span>
+							<span class="c-left-bottom">.c-left-bottom</span>
+							<span class="c-right-top">.c-right-top</span>
+							<span class="c-right-bottom">.c-right-bottom</span>
+						</div>
+					</div>
+					<div class="demo-code">&lt;div class="cmn-position"&gt;&lt;span style="width:80%;height:50%;"&gt;绝对垂直居中&lt;/span&gt;&lt;/div&gt;
+&lt;div class="cmn-position"&gt;&lt;img src="https://www.baidu.com/img/baidu_jgylogo3.gif" /&gt;&lt;/div&gt;
+&lt;div class="cmn-position"&gt;&lt;img src="http://pic.ffpic.com/files/2014/1122/1121mtfmmctzmx4bz3.jpg" /&gt;&lt;/div&gt;
+&lt;!--不是img标签如span若要居中需对其设置相应尺寸才生效--&gt;
+&lt;div class="cmn-position"&gt;
+    &lt;span style="width:5em;height:1.8em;"&gt;居中&lt;/span&gt;
+    &lt;span class="c-top"&gt;垂直居上&lt;/span&gt;
+    &lt;span class="c-left"&gt;垂直居左&lt;/span&gt;
+    &lt;span class="c-bottom"&gt;垂直居下&lt;/span&gt;
+    &lt;span class="c-right"&gt;垂直居右&lt;/span&gt;
+    &lt;span class="c-left-top"&gt;垂直左上&lt;/span&gt;
+    &lt;span class="c-left-bottom"&gt;垂直左下&lt;/span&gt;
+    &lt;span class="c-right-top"&gt;垂直右上&lt;/span&gt;
+    &lt;span class="c-right-bottom"&gt;垂直右下&lt;/span&gt;
+&lt;/div&gt;</div>
+				</div>
+			</div>
+			<div class="child-navigation J-child-navigation" data-title="保持指定比例（拖动右下角看效果）">
+				<input type="checkbox" />
+				<label></label>
+				<div>
+					<div>
+						<div class="css-cmn-proportion">
+							<ul class="cmn-none">
+								<li>
+									<div class="cmn-position cmn-1-1"><div>保持高会跟着宽的比例变化，1:1</div></div>
+								</li>
+								<li>
+									<div class="cmn-position cmn-1-1" style="padding-top:50%;"><div>高度比例通过padding-top调整，这里50%为2:1</div></div>
+								</li>
+								<li>
+									<div class="cmn-position cmn-4-3"><img title="4:3" src="http://pic.ffpic.com/files/2014/1122/1121mtfmmctzmx4bz3.jpg" /></div>
+								</li>
+								<li>
+									<div class="cmn-position cmn-3-4"><img title="3:4" src="http://pic.ffpic.com/files/2014/1122/1121mtfmmctzmx4bz3.jpg" /></div>
+								</li>
+								<li>
+									<div class="cmn-position cmn-16-9"><img title="16:9" src="http://pic.ffpic.com/files/2014/1122/1121mtfmmctzmx4bz3.jpg" /></div>
+								</li>
+								<li>
+									<div class="cmn-position cmn-9-16"><img title="9:16" src="http://pic.ffpic.com/files/2014/1122/1121mtfmmctzmx4bz3.jpg" /></div>
+								</li>
+								<li>
+									<div class="cmn-position cmn-proportion"><img title="cmn-proportion -> 3:4" src="http://pic.ffpic.com/files/2014/1122/1121mtfmmctzmx4bz3.jpg" /></div>
+								</li>
+							</ul>
+						</div>
+					</div>
+					<div class="demo-code">
+&lt;!-- 1:1 --&gt;
+&lt;div class="cmn-position cmn-1-1"&gt;&lt;div&gt;1:1&lt;/div&gt;&lt;/div&gt;
+&lt;!-- 通过padding-top:50%;设置为2:1 --&gt;
+&lt;div class="cmn-position cmn-1-1" style="padding-top:50%;"&gt;&lt;div&gt;2:1&lt;/div&gt;&lt;/div&gt;
+&lt;!-- 3:4 --&gt;
+&lt;div class="cmn-position cmn-3-4"&gt;&lt;img src="http://pic.ffpic.com/files/2014/1122/1121mtfmmctzmx4bz3.jpg" /&gt;&lt;/div&gt;
+&lt;!-- 4:3 --&gt;
+&lt;div class="cmn-position cmn-4-3"&gt;&lt;img src="http://pic.ffpic.com/files/2014/1122/1121mtfmmctzmx4bz3.jpg" /&gt;&lt;/div&gt;
+&lt;!-- 16:9 --&gt;
+&lt;div class="cmn-position cmn-16-9"&gt;&lt;img src="http://pic.ffpic.com/files/2014/1122/1121mtfmmctzmx4bz3.jpg" /&gt;&lt;/div&gt;
+&lt;!-- 9:16 --&gt;
+&lt;div class="cmn-position cmn-9-16"&gt;&lt;img src="http://pic.ffpic.com/files/2014/1122/1121mtfmmctzmx4bz3.jpg" /&gt;&lt;/div&gt;
+&lt;!-- 可重写自定义比例，这里默认3:4，padding-top:133.33%; --&gt;
+&lt;div class="cmn-position cmn-proportion"&gt;&lt;div&gt;3:4&lt;/div&gt;&lt;/div&gt;</div>
+				</div>
+			</div>
+			<div class="child-navigation J-child-navigation" data-title="无数据状态提示">
+				<input type="checkbox" />
+				<label></label>
+				<div>
+					<div>
+						<div class="cmn-nodata"></div>
+					</div>
+					<div class="demo-code">&lt;div class="cmn-nodata"&gt;&lt;/div&gt;
+&lt;div class="cmn-nodata" after-content="暂无满足条件的数据"&gt;&lt;/div&gt;</div>
+				</div>
+			</div>
+			<div class="child-navigation J-child-navigation" data-title="圆点和点值（统计标识）">
+				<input type="checkbox" />
+				<label></label>
+				<div>
+					<div style="padding:20px 0">
+						<span class="cmn-dot">我的消息<u></u></span>&nbsp;&nbsp;&nbsp;
+						<span class="cmn-dot">我的消息<u data-text="23"></u></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+						<span class="cmn-dot">我的消息<u class="c-rectangle"></u></span>&nbsp;&nbsp;&nbsp;
+						<span class="cmn-dot">我的消息<u data-text="23" class="c-rectangle"></u></span>
+					</div>
+					<div class="demo-code">&lt;span class="cmn-dot"&gt;我的消息&lt;u&gt;&lt;/u&gt;&lt;/span&gt;
+&lt;span class="cmn-dot"&gt;我的消息&lt;u data-text="23"&gt;&lt;/u&gt;&lt;/span&gt;
+&lt;span class="cmn-dot"&gt;我的消息&lt;u class="c-rectangle"&gt;&lt;/u&gt;&lt;/span&gt;
+&lt;span class="cmn-dot"&gt;我的消息&lt;u data-text="23" class="c-rectangle"&gt;&lt;/u&gt;&lt;/span&gt;</div>
+				</div>
+			</div>
+			<div class="child-navigation J-child-navigation" data-title="float栏目分块（左中右）">
+				<input type="checkbox" />
+				<label></label>
+				<div>
+					<div class="css-cmn-float">
+						<!--可分三栏，第一个块左浮动，第二块右浮动，第三块居中-->
+						<div class="cmn-float">
+							<div>左</div>
+							<div>右</div>
+							<div>
+								<!--中间插入自己的标签即可，样式自定义-->
+								<div style="margin: 0 10px;">中</div>
+							</div>
+						</div>
+					</div>
+					<div class="demo-code">&lt;!--可分三栏，第一个块左浮动，第二块右浮动，第三块居中--&gt;
+&lt;div class="cmn-float"&gt;
+    &lt;div&gt;左&lt;/div&gt;
+    &lt;div&gt;右&lt;/div&gt;
+    &lt;div&gt;
+        &lt;!--中间插入自己的标签即可，样式自定义--&gt;
+        &lt;div style="margin: 0 10px;"&gt;中&lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;</div>
+				</div>
+			</div>
+			<div class="child-navigation J-child-navigation" data-title="区块列表">
+				<input type="checkbox" />
+				<label></label>
+				<div>
+					<div>
+						<div class="cmn-block-list">
+							<ul class="cmn-mlr-5 cmn-mb-10">
+								<li class="cmn-mb10">
+									<div class="cmn-mlr5"></div>
+								</li>
+								<li class="cmn-mb10">
+									<div class="cmn-mlr5" after-content="第2块"></div>
+								</li>
+								<li class="cmn-mb10">
+									<div class="cmn-mlr5"></div>
+								</li>
+								<li class="cmn-mb10">
+									<div class="cmn-mlr5"></div>
+								</li>
+								<li class="cmn-mb10">
+									<div class="cmn-mlr5" after-content="第5块"></div>
+								</li>
+								<li class="cmn-mb10">
+									<div class="cmn-mlr5" after-content="第6块"></div>
+								</li>
+							</ul>
+						</div>
+					</div>
+					<div class="demo-code">&lt;!-- c-column-1至15列，默认4列 --&gt;
+&lt;div class="cmn-block-list"&gt;
+    &lt;ul class="cmn-mlr-5 cmn-mb-10"&gt;     &lt;!-- 可设置列数：class="c-column-5" --&gt;
+        &lt;li class="cmn-mb10"&gt;
+            &lt;!--div里放任意内容会自动清除样式--&gt;
+            &lt;div class="cmn-mlr5"&gt;&lt;/div&gt;
+        &lt;/li&gt;
+        &lt;li class="cmn-mb10"&gt;
+            &lt;div class="cmn-mlr5" after-content="第2块"&gt;&lt;/div&gt;
+        &lt;/li&gt;
+        &lt;li class="cmn-mb10"&gt;
+            &lt;div class="cmn-mlr5"&gt;&lt;/div&gt;
+        &lt;/li&gt;
+        &lt;li class="cmn-mb10"&gt;
+            &lt;div class="cmn-mlr5"&gt;&lt;/div&gt;
+        &lt;/li&gt;
+        &lt;li class="cmn-mb10"&gt;
+            &lt;div class="cmn-mlr5" after-content="第5块"&gt;&lt;/div&gt;
+        &lt;/li&gt;
+        &lt;li class="cmn-mb10"&gt;
+            &lt;div class="cmn-mlr5" after-content="第6块"&gt;&lt;/div&gt;
+        &lt;/li&gt;
+    &lt;/ul&gt;
+&lt;/div&gt;</div>
+				</div>
+			</div>
+			<div class="child-navigation J-child-navigation" data-title="整体组合：图片列表">
+				<input type="checkbox" />
+				<label></label>
+				<div>
+					<div>
+						<div>图片列表+float分块+内容定位+按比例缩放等<br /><br /></div>
+						<div class="cmn-block-list">
+							<!-- 显示5列 -->
+						    <ul class="cmn-mlr-5 cmn-mb-10 c-column-5">
+						        <li class="cmn-mb10">
+						            <div class="cmn-mlr5">
+						            	<div class="cmn-position cmn-1-1"><img src="http://pic.ffpic.com/files/2014/1122/1121mtfmmctzmx4bz3.jpg" /></div>
+						            </div>
+						        </li>
+						        <li class="cmn-mb10">
+						            <div class="cmn-mlr5">
+						            	<div class="cmn-position cmn-1-1"><img src="http://pic.ffpic.com/files/2014/1122/1121mtfmmctzmx4bz3.jpg" /></div>
+										<div class="cmn-float">
+										    <div>
+										    	<span class="cmn-btn cmn-bg-orange cmn-white" style="padding:0 5px;">收藏</span></div>
+										    <div>
+										    	<span class="cmn-btn cmn-bg-red cmn-white" style="padding:0 5px;">购买</span>
+										    </div>
+										    <div>图片标题</div>
+										</div>
+						            </div>
+						        </li>
+						        <li class="cmn-mb10">
+						            <div class="cmn-mlr5">
+						            	<div class="cmn-position cmn-1-1"><img src="http://pic.ffpic.com/files/2014/1122/1121mtfmmctzmx4bz3.jpg" /></div>
+						            	<div class="cmn-float">
+										    <div>
+										    	<span before-content="剩" after-content="件">188</span>
+										    </div>
+										    <div>
+										    	<small><s class="cmn-gray" before-content="￥">199</s></small>&nbsp;<span class="cmn-red" before-content="￥">119</span>
+										    </div>
+										</div>
+						            </div>
+						        </li>
+						        <li class="cmn-mb10">
+						            <div class="cmn-mlr5">
+						            	<div class="cmn-position cmn-1-1">
+						            		<img src="http://pic.ffpic.com/files/2014/1122/1121mtfmmctzmx4bz3.jpg" />
+						            		<span class="c-left-top cmn-white cmn-bg-orange" before-content="已购" after-content="件">12</span>
+						            		<span class="c-left-bottom cmn-bg-gray">左下角</span>
+						            		<span class="c-right-top cmn-bg-gray">右上角</span>
+						            		<span class="c-right-bottom cmn-bg-gray">右下角</span>
+						            	</div>
+						            	<div>
+						            		<label><input type="checkbox" class="cmn-checkbox" /><s></s><span>选择</span></label>
+						            	</div>
+						            </div>
+						        </li>
+						        <li class="cmn-mb10">
+						            <div class="cmn-mlr5">
+						            	<div class="cmn-position cmn-1-1">
+						            		<img src="http://pic.ffpic.com/files/2014/1122/1121mtfmmctzmx4bz3.jpg" />
+						            		<button class="cmn-btn cmn-orange" style="width:5em;height: 1.8em;">更改图片<input type="file" /></button>
+						            	</div>
+						            	<div>
+						            		<label><input type="checkbox" class="cmn-checkbox" checked="" /><s></s><span>选择</span></label>
+						            	</div>
+						            </div>
+						        </li>
+						        <li class="cmn-mb10">
+						            <div class="cmn-mlr5">
+						            	<div class="cmn-position cmn-1-1">
+						            		<img src="http://pic.ffpic.com/files/2014/1122/1121mtfmmctzmx4bz3.jpg" />
+						            	</div>
+						            	<div class="cmn-float">
+						            		<div>
+							            		<label><input type="radio" name="s" class="cmn-checkbox" /><s></s><span>选左</span></label>
+						            		</div>
+						            		<div>
+							            		<label><input type="radio" name="s" class="cmn-checkbox" checked="" /><s></s><span>选右</span></label>
+						            		</div>
+						            	</div>
+						            </div>
+						        </li>
+						    </ul>
+						</div>
+					</div>
+					<div class="demo-code">
+&lt;!--调整浏览器宽度看整体效果--&gt;
+&lt;div class="cmn-block-list"&gt;
+    &lt;!-- 显示5列 --&gt;
+    &lt;ul class="c-column-5"&gt;
+        &lt;li&gt;
+            &lt;div&gt;
+                &lt;div class="cmn-position cmn-3-4"&gt;&lt;img src="http://pic.ffpic.com/files/2014/1122/1121mtfmmctzmx4bz3.jpg" /&gt;&lt;/div&gt;
+            &lt;/div&gt;
+        &lt;/li&gt;
+        &lt;li&gt;
+            &lt;div&gt;
+                &lt;div class="cmn-position cmn-3-4"&gt;&lt;img src="http://pic.ffpic.com/files/2014/1122/1121mtfmmctzmx4bz3.jpg" /&gt;&lt;/div&gt;
+                &lt;div class="cmn-float"&gt;
+                    &lt;div&gt;
+                        &lt;span class="cmn-btn cmn-bg-orange cmn-white" style="padding:0 5px;"&gt;收藏&lt;/span&gt;&lt;/div&gt;
+                    &lt;div&gt;
+                        &lt;span class="cmn-btn cmn-bg-red cmn-white" style="padding:0 5px;"&gt;购买&lt;/span&gt;
+                    &lt;/div&gt;
+                    &lt;div&gt;图片标题&lt;/div&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+        &lt;/li&gt;
+        &lt;li&gt;
+            &lt;div&gt;
+                &lt;div class="cmn-position cmn-3-4"&gt;&lt;img src="http://pic.ffpic.com/files/2014/1122/1121mtfmmctzmx4bz3.jpg" /&gt;&lt;/div&gt;
+                &lt;div class="cmn-float"&gt;
+                    &lt;div&gt;
+                        &lt;span before-content="剩" after-content="件"&gt;188&lt;/span&gt;
+                    &lt;/div&gt;
+                    &lt;div&gt;
+                        &lt;small&gt;&lt;s class="cmn-gray" before-content="￥"&gt;199&lt;/s&gt;&lt;/small&gt;&amp;nbsp;&lt;span class="cmn-red" before-content="￥"&gt;119&lt;/span&gt;
+                    &lt;/div&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+        &lt;/li&gt;
+        &lt;li&gt;
+            &lt;div&gt;
+                &lt;div class="cmn-position cmn-3-4"&gt;
+                    &lt;img src="http://pic.ffpic.com/files/2014/1122/1121mtfmmctzmx4bz3.jpg" /&gt;
+                    &lt;span class="c-left-top cmn-white cmn-bg-orange" before-content="已购" after-content="件"&gt;12&lt;/span&gt;
+                    &lt;span class="c-left-bottom cmn-bg-gray"&gt;左下角&lt;/span&gt;
+                    &lt;span class="c-right-top cmn-bg-gray"&gt;右上角&lt;/span&gt;
+                    &lt;span class="c-right-bottom cmn-bg-gray"&gt;右下角&lt;/span&gt;
+                &lt;/div&gt;
+                &lt;div&gt;
+                    &lt;label&gt;&lt;input type="checkbox" class="cmn-checkbox" /&gt;&lt;s&gt;&lt;/s&gt;&lt;span&gt;选择&lt;/span&gt;&lt;/label&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+        &lt;/li&gt;
+        &lt;li&gt;
+            &lt;div&gt;
+                &lt;div class="cmn-position cmn-3-4"&gt;
+                    &lt;img src="http://pic.ffpic.com/files/2014/1122/1121mtfmmctzmx4bz3.jpg" /&gt;
+                    &lt;button class="cmn-btn cmn-orange" style="width:5em;height: 1.8em;"&gt;更改图片&lt;input type="file" /&gt;&lt;/button&gt;
+                &lt;/div&gt;
+                &lt;div&gt;
+                    &lt;label&gt;&lt;input type="checkbox" class="cmn-checkbox" checked="" /&gt;&lt;s&gt;&lt;/s&gt;&lt;span&gt;选择&lt;/span&gt;&lt;/label&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+        &lt;/li&gt;
+    &lt;/ul&gt;
+&lt;/div&gt;</div>
+				</div>
+			</div>
+			<div class="child-navigation J-child-navigation" data-title="自定义普通表格">
+				<input type="checkbox" />
+				<label></label>
+				<div>
+					<div>
+						<ul class="cmn-table">
+							<li class="cmn-bg-gray">
+								<div style="width:3em">序号</div>
+								<div>标题</div>
+								<div>简介</div>
+							</li>
+							<li>
+								<div>1</div>
+								<div>li相当于tr</div>
+								<div>div相当于td</div>
+							</li>
+							<li>
+								<div>2</div>
+								<div>标签类型任意，如：div.cmn-table>div>span都行；</div>
+								<div>其它样式需自定义或覆盖重写</div>
+							</li>
+						</ul>
+						<br />
+						清除外边框
+						<ul class="cmn-table cmn-none">
+						    <li>
+						        <div>1</div>
+						        <div>4</div>
+						        <div>7</div>
+						    </li>
+						    <li>
+						        <div>2</div>
+						        <div>5</div>
+						        <div>8</div>
+						    </li>
+						    <li>
+						        <div>3</div>
+						        <div>6</div>
+						        <div>9</div>
+						    </li>
+						</ul>
+						<br />
+						清除内部标签的边框
+						<ul class="cmn-table">
+						    <li class="c-clear-border">
+						        <div>1</div>
+						        <div>2</div>
+						        <div>3</div>
+						    </li>
+						    <li class="c-clear-border">
+						        <div>4</div>
+						        <div>5</div>
+						        <div>6</div>
+						    </li>
+						</ul>
+						<br />
+						清除(含)内部标签的边框
+						<ul class="cmn-table cmn-clear-border">
+						    <li>
+						        <div>1</div>
+						        <div>2</div>
+						        <div>3</div>
+						    </li>
+						    <li>
+						        <div>4</div>
+						        <div>5</div>
+						        <div>6</div>
+						    </li>
+						</ul>
+					</div>
+					<div class="demo-code">&lt;ul class="cmn-table"&gt;
+    &lt;li class="cmn-bg-gray"&gt;
+        &lt;div style="width:3em"&gt;序号&lt;/div&gt;
+        &lt;div&gt;标题&lt;/div&gt;
+        &lt;div&gt;简介&lt;/div&gt;
+    &lt;/li&gt;
+    &lt;li&gt;
+        &lt;div&gt;1&lt;/div&gt;
+        &lt;div&gt;li相当于tr&lt;/div&gt;
+        &lt;div&gt;div相当于td&lt;/div&gt;
+    &lt;/li&gt;
+    &lt;li&gt;
+        &lt;div&gt;2&lt;/div&gt;
+        &lt;div&gt;标签类型任意，如：div.cmn-table&gt;div&gt;span都行；&lt;/div&gt;
+        &lt;div&gt;其它样式需自定义或覆盖重写&lt;/div&gt;
+    &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;!--清除外边框--&gt;
+&lt;ul class="cmn-table cmn-none"&gt;
+    &lt;li&gt;
+        &lt;div&gt;1&lt;/div&gt;
+        &lt;div&gt;4&lt;/div&gt;
+        &lt;div&gt;7&lt;/div&gt;
+    &lt;/li&gt;
+    &lt;li&gt;
+        &lt;div&gt;2&lt;/div&gt;
+        &lt;div&gt;5&lt;/div&gt;
+        &lt;div&gt;8&lt;/div&gt;
+    &lt;/li&gt;
+    &lt;li&gt;
+        &lt;div&gt;3&lt;/div&gt;
+        &lt;div&gt;6&lt;/div&gt;
+        &lt;div&gt;9&lt;/div&gt;
+    &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;!--清除内部标签的边框--&gt;
+&lt;ul class="cmn-table"&gt;
+    &lt;li class="c-clear-border"&gt;
+        &lt;div&gt;1&lt;/div&gt;
+        &lt;div&gt;2&lt;/div&gt;
+        &lt;div&gt;3&lt;/div&gt;
+    &lt;/li&gt;
+    &lt;li class="c-clear-border"&gt;
+        &lt;div&gt;4&lt;/div&gt;
+        &lt;div&gt;5&lt;/div&gt;
+        &lt;div&gt;6&lt;/div&gt;
+    &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;!--清除(含)内部标签的边框--&gt;
+&lt;ul class="cmn-table cmn-clear-border"&gt;
+    &lt;li&gt;
+        &lt;div&gt;1&lt;/div&gt;
+        &lt;div&gt;2&lt;/div&gt;
+        &lt;div&gt;3&lt;/div&gt;
+    &lt;/li&gt;
+    &lt;li&gt;
+        &lt;div&gt;4&lt;/div&gt;
+        &lt;div&gt;5&lt;/div&gt;
+        &lt;div&gt;6&lt;/div&gt;
+    &lt;/li&gt;
+&lt;/ul&gt;</div>
+				</div>
+			</div>
+			<div class="child-navigation J-child-navigation" data-title="自定义表格组">
+				<input type="checkbox" />
+				<label></label>
+				<div>
+					<div>
+						<div class="cmn-tableg">
+							<div class="tcaption">无表头脚注结构的表格组</div>
+						    <ul>
+						        <li class="cmn-bg-gray">
+						            <div style="width: 3em">序号</div>
+						            <div style="width:50%">标题</div>
+						            <div>简介</div>
+						        </li>
+						        <li>
+						            <div>1</div>
+						            <div>结构上会多一层，效果与自定义的普通表格呈现一致</div>
+						            <div></div>
+						        </li>
+						        <li>
+						            <div>2</div>
+						            <div>标签类型随意，如：div.cmn-tableg>ul>li>div</div>
+						            <div></div>
+						        </li>
+						    </ul>
+						</div>
+						<br />
+						<div class="cmn-tableg">
+							<div class="tcaption">有thead(表头)和tfoot(脚注)结构的表格组</div>
+							<ul class="thead">
+								<li class="cmn-bg-gray">
+									<div style="width: 3em">序号</div>
+									<div style="width:50%">thead(表头)标题</div>
+									<div>简介</div>
+								</li>
+							</ul>
+							<ul>
+								<li>
+									<div>1</div>
+									<div>thead(表头)和tfoot(脚注)是独立的</div>
+									<div></div>
+								</li>
+								<li>
+									<div>2</div>
+									<div>如：div.cmn-tableg>ul.thead>li>div</div>
+									<div></div>
+								</li>
+							</ul>
+							<ul class="tfoot">
+								<li style="background: #f5f5f5;">
+									<div></div>
+									<div>tfoot(脚注)信息</div>
+									<div></div>
+								</li>
+							</ul>
+						</div>
+					</div>
+					<div class="demo-code">&lt;div class="cmn-tableg"&gt;
+    &lt;div class="tcaption"&gt;无表头脚注结构的表格组&lt;/div&gt;
+    &lt;ul&gt;
+        &lt;li class="cmn-bg-gray"&gt;
+            &lt;div style="width: 3em"&gt;序号&lt;/div&gt;
+            &lt;div style="width:50%"&gt;标题&lt;/div&gt;
+            &lt;div&gt;简介&lt;/div&gt;
+        &lt;/li&gt;
+        &lt;li&gt;
+            &lt;div&gt;1&lt;/div&gt;
+            &lt;div&gt;结构上会多一层，效果与自定义的普通表格呈现一致&lt;/div&gt;
+            &lt;div&gt;&lt;/div&gt;
+        &lt;/li&gt;
+        &lt;li&gt;
+            &lt;div&gt;2&lt;/div&gt;
+            &lt;div&gt;&lt;/div&gt;
+            &lt;div&gt;&lt;/div&gt;
+        &lt;/li&gt;
+    &lt;/ul&gt;
+&lt;/div&gt;
+
+&lt;!--=======================================--&gt;
+&lt;div class="cmn-tableg"&gt;
+    &lt;div class="tcaption"&gt;有thead(表头)和tfoot(脚注)结构的表格组&lt;/div&gt;
+    &lt;ul class="thead"&gt;
+        &lt;li class="cmn-bg-gray"&gt;
+            &lt;div style="width: 3em"&gt;序号&lt;/div&gt;
+            &lt;div style="width:50%"&gt;thead(表头)标题&lt;/div&gt;
+            &lt;div&gt;简介&lt;/div&gt;
+        &lt;/li&gt;
+    &lt;/ul&gt;
+    &lt;ul&gt;
+        &lt;li&gt;
+            &lt;div&gt;1&lt;/div&gt;
+            &lt;div&gt;thead(表头)和tfoot(脚注)是独立的&lt;/div&gt;
+            &lt;div&gt;&lt;/div&gt;
+        &lt;/li&gt;
+        &lt;li&gt;
+            &lt;div&gt;2&lt;/div&gt;
+            &lt;div&gt;&lt;/div&gt;
+            &lt;div&gt;&lt;/div&gt;
+        &lt;/li&gt;
+    &lt;/ul&gt;
+    &lt;ul class="tfoot"&gt;
+        &lt;li style="background: #f5f5f5;"&gt;
+            &lt;div&gt;&lt;/div&gt;
+            &lt;div&gt;tfoot(脚注)信息&lt;/div&gt;
+            &lt;div&gt;&lt;/div&gt;
+        &lt;/li&gt;
+    &lt;/ul&gt;
+&lt;/div&gt;</div>
+				</div>
+			</div>
+			<!--<div class="child-navigation J-child-navigation" data-title="补充文本内容">
+				<input type="checkbox" />
+				<label></label>
+				<div>
+					<div>
+						
+					</div>
+					<div class="demo-code"></div>
+				</div>
+			</div>-->
+		</div>
+		<div class="main-navigation" data-title="Helper.js">
+			<div class="child-navigation J-child-navigation" data-title="tip：轻提示">
+				<input type="checkbox" />
+				<label></label>
+				<div>
+					<div>
+						<button class="demo-tip">示例：轻提示（默认居中）</button>
+						<button class="demo-tip" data-position="top">轻提示（顶部）</button>
+						<button class="demo-tip" data-position="right-top" data-maximum="3">轻提示（右上角<=3，连击）</button>
+					</div>
+					<div class="demo-code">Helper.tip("轻提示内容");
+Helper.tip("轻提示内容",5000);	//5秒消失
+Helper.tip("轻提示内容","top");	//顶部显示
+Helper.tip({
+	content:"轻提示内容",
+	time:5000,
+	position:"right-top",
+	maximum:3
+});</div>
+					<div class="demo-attr-list">
+						<ul class="cmn-table cmn-gray">
+							<li style="background: #f5f5f5;color: #000000;">
+								<div>属性</div>
+								<div>类型</div>
+								<div>默认值</div>
+								<div style="width:60%;">功能说明</div>
+							</li>
+							<li>
+								<div>content</div>
+								<div>string</div>
+								<div></div>
+								<div>轻提示内容（可以被第一个参数为字符串时取代）</div>
+							</li>
+							<li>
+								<div>time</div>
+								<div>number</div>
+								<div></div>
+								<div>停留时间（可以被第二个参数为数值时取代）</div>
+							</li>
+							<li>
+								<div>position</div>
+								<div>string</div>
+								<div></div>
+								<div>位置（第二、三个参数包含以下项可被取代）<br />top、bottom、left、right、left[right]-top、left[right]-bottom</div>
+							</li>
+							<li>
+								<div>maximum</div>
+								<div>number</div>
+								<div></div>
+								<div>最多个数(会去重复项)</div>
+							</li>
+							<li>
+								<div>zIndex</div>
+								<div>number</div>
+								<div></div>
+								<div>设置堆叠层级顺序</div>
+							</li>
+						</ul>
+					</div>
+				</div>
+				<script>
+					$(".demo-tip").on("click",function(){
+						var _position= $(this).attr("data-position");
+						var _maximum= Number($(this).attr("data-maximum"));
+							_maximum = _maximum ? _maximum : 1;
+						Helper.tip({
+							content:"轻提示内容"+new Date().getMilliseconds(),
+							position:_position,
+							maximum:_maximum,
+							zIndex:334
+						})
+					});
+				</script>
+			</div>
+			<div class="child-navigation J-child-navigation" data-title="hotKey：快捷热键功能">
+				<input type="checkbox" />
+				<label></label>
+				<div>
+					<div>
+						<button class="hot-key" data-hot-key="Ctrl+K">弹出轻提示(Ctrl+K)</button>
+						<div>通过设置：data-hot-key="Enter"（设置组合热键）；</div>
+						<div>通过设置：data-hotkey-trigger="dblclick keyup"（自定被激活的事件）</div>
+						<div>然后调用：Helper.hotKey("指定DOM对象");</div>
+					</div>
+					<div class="demo-code">&lt;button class="hot-key" data-hot-key="Ctrl+K"&gt;弹出轻提示(Ctrl+K)&lt;/button&gt;
+//监听所有热键对象
+Helper.hotKey();
+//或监听指定热键对象
+Helper.hotKey(".hot-key");
+<div style="opacity: .5;">//相关事件代码（默认click 和 focus）
+$(document).on("click",".hot-key",function(){
+    Helper.tip("轻提示(Ctrl+K)");
+});</div></div>
+				</div>
+				<script type="text/javascript">
+					$(document).on("click",".hot-key",function(){
+						Helper.tip("轻提示(Ctrl+K)");
+					});
+					Helper.hotKey();
+				</script>
+			</div>
+			<div class="child-navigation J-child-navigation" data-title="dialog：对话框">
+				<input type="checkbox" />
+				<label></label>
+				<div>
+					<div>
+						<button id="dialog-btn">示例：点我弹窗</button>
+					</div>
+					<div class="demo-code">Helper.dialog({
+    title:"操作提醒",
+    content:"确定操作吗？",
+    exit:true,
+    buttons:{
+        "取消":function(){
+            $(this).remove();
+        },
+        "确定":{
+            hotKey:"Enter",
+            method:function(){
+                Helper.tip("操作成功");
+                $(this).remove();
+            }
+        }
+    }
+});</div>
+					<div class="demo-attr-list">
+						<ul class="cmn-table cmn-gray">
+							<li style="background: #f5f5f5;color: #000000;">
+								<div>属性</div>
+								<div>类型</div>
+								<div>默认值</div>
+								<div style="width:60%;">功能说明</div>
+							</li>
+							<li>
+								<div>content</div>
+								<div>string</div>
+								<div></div>
+								<div>弹窗内容</div>
+							</li>
+							<li>
+								<div>title</div>
+								<div>string</div>
+								<div></div>
+								<div>弹窗标题</div>
+							</li>
+							<li>
+								<div>exit</div>
+								<div>boolean</div>
+								<div>false</div>
+								<div>默认关闭弹窗按钮</div>
+							</li>
+							<li>
+								<div>opacity</div>
+								<div>number</div>
+								<div>0.2</div>
+								<div>遮罩层透明度：0至1</div>
+							</li>
+							<li>
+								<div>overlayClose</div>
+								<div>boolean</div>
+								<div>false</div>
+								<div>点击遮罩层关闭弹窗</div>
+							</li>
+							<li>
+								<div>className</div>
+								<div>string</div>
+								<div></div>
+								<div>新增自定义class</div>
+							</li>
+							<li>
+								<div>attr</div>
+								<div>object</div>
+								<div>{}</div>
+								<div>新增自定义属性，如：{"title":"标题"}</div>
+							</li>
+							<li>
+								<div>style</div>
+								<div>object</div>
+								<div>{}</div>
+								<div>弹窗内容块样式，如：{"color":"#999999"}</div>
+							</li>
+							<li>
+								<div>dialogStyle</div>
+								<div>object</div>
+								<div>{}</div>
+								<div>自定义弹窗容器样式</div>
+							</li>
+							<li>
+								<div>overlay</div>
+								<div>object</div>
+								<div>{}</div>
+								<div>覆盖层样式，如：{"background":"rgba(255,255,255,.5)"}</div>
+							</li>
+							<li>
+								<div>time</div>
+								<div>number</div>
+								<div></div>
+								<div>以毫秒定时关闭弹窗</div>
+							</li>
+							<li>
+								<div>zIndex</div>
+								<div>number</div>
+								<div></div>
+								<div>设置堆叠层级顺序</div>
+							</li>
+							<li>
+								<div>buttons</div>
+								<div>object</div>
+								<div></div>
+								<div>
+									<div class="demo-code">按钮组，代码如下：
+方式1：{"确定":function(){ }}
+方式2：
+{"确定":{
+    className:"cla1 cla2",	//添加class
+    style:{"color","red"},		//添加样式
+    attr:{"data-*":""},			//添加属性值
+    hotKey:"Ctrl+H",			//设置热键(也可通过attr属性来设置)
+    method:function(){ }		//执行函数
+}}</div>
+								</div>
+							</li>
+						</ul>
+					</div>
+				</div>
+				<script>
+				$("#dialog-btn").on("click",function(){
+					Helper.dialog({
+						title:"操作提醒",
+						content:"确定操作吗？",
+						exit:true,
+						zIndex:223,
+						buttons:{
+							"取消":function(){
+								$(this).remove();
+							},
+							"确定":{
+								hotKey:"Enter",
+								method:function(){
+									Helper.tip("操作成功");
+									$(this).remove();
+								}
+							}
+						}
+					})
+				})
+				</script>
+			</div>
+			<div class="child-navigation J-child-navigation" data-title="方向键移动焦点">
+				<input type="checkbox" />
+				<label></label>
+				<div>
+					<div>
+						<div>激活文本框，按方向键查看效果</div>
+						<ul class="cmn-table demo-focusMove" style="text-align: center;">
+							<li>
+								<div><input type="text" /></div>
+								<div><input type="text" /></div>
+								<div><input type="text" /></div>
+							</li>
+							<li>
+								<div><input type="text" /></div>
+								<div><input type="text" /></div>
+								<div><input type="text" disabled="" /></div>
+							</li>
+							<li>
+								<div><input type="text" /></div>
+								<div><input type="text" /></div>
+								<div><input type="text" /></div>
+							</li>
+						</ul>
+					</div>
+					<div class="demo-code">&lt;ul class="cmn-table demo-focusMove"&gt;
+    &lt;li&gt;
+        &lt;div&gt;&lt;input type="text" /&gt;&lt;/div&gt;
+        &lt;div&gt;&lt;input type="text" /&gt;&lt;/div&gt;
+        &lt;div&gt;&lt;input type="text" /&gt;&lt;/div&gt;
+    &lt;/li&gt;
+    &lt;li&gt;
+        &lt;div&gt;&lt;input type="text" /&gt;&lt;/div&gt;
+        &lt;div&gt;&lt;input type="text" /&gt;&lt;/div&gt;
+        &lt;div&gt;&lt;input type="text" disabled="" /&gt;&lt;/div&gt;
+    &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;script&gt;
+Helper.focusMove({
+    target: '.demo-focusMove',
+    rowLabel:"li",
+    cellLabel:"div",
+    inputLabel: 'input:enabled',
+    visualPosition: true,
+    minTop: 0,
+    minBottom: 200,
+    callback:function(obj){
+        //...
+    }
+});
+&lt;/script&gt;</div>
+					<div class="demo-attr-list">
+						<ul class="cmn-table cmn-gray">
+							<li style="background: #f5f5f5;color: #000000;">
+								<div>属性</div>
+								<div>类型</div>
+								<div>默认值</div>
+								<div style="width:60%;">功能说明</div>
+							</li>
+							<li>
+								<div>target</div>
+								<div>string || DOM对象</div>
+								<div></div>
+								<div>焦点区域对象</div>
+							</li>
+							<li>
+								<div>rowLabel</div>
+								<div>string</div>
+								<div>tr</div>
+								<div>行标签名</div>
+							</li>
+							<li>
+								<div>cellLabel</div>
+								<div>string</div>
+								<div>td</div>
+								<div>单元格标签名</div>
+							</li>
+							<li>
+								<div>inputLabel</div>
+								<div>string</div>
+								<div>input:enabled</div>
+								<div>焦点对象</div>
+							</li>
+							<li>
+								<div>visualPosition</div>
+								<div>boolean</div>
+								<div>false</div>
+								<div>是否开启视觉定位</div>
+							</li>
+							<li>
+								<div>minTop</div>
+								<div>number</div>
+								<div>0</div>
+								<div>至少隔顶部位置</div>
+							</li>
+							<li>
+								<div>minBottom</div>
+								<div>string</div>
+								<div>0</div>
+								<div>至少隔底部位置</div>
+							</li>
+							<li>
+								<div>callback</div>
+								<div>Function</div>
+								<div></div>
+								<div>回调函数</div>
+							</li>
+						</ul>
+					</div>
+				</div>
+				<script>
+					// 上下左右键控制输入框
+					Helper.focusMove({
+					    target: '.demo-focusMove',
+					    rowLabel:"li",
+					    cellLabel:"div",
+					    minTop: 0,
+					    minBottom: 200,
+					    visualPosition: true,
+					    inputLabel: 'input:enabled',
+					    callback:function(obj){
+					    	//...
+					    }
+					});
+				</script>
+			</div>
+			<!--<div class="child-navigation J-child-navigation" data-title="补充文本内容">
+				<input type="checkbox" />
+				<label></label>
+				<div>
+					<div>
+						
+					</div>
+					<div class="demo-code"></div>
+				</div>
+			</div>-->
+		</div>
+		<script type="text/javascript">
+			$(".J-child-navigation>input[type=checkbox]").each(function(i){
+				$(this).attr("id","id_"+i).next("label").attr("for","id_"+i);
+			});
+			//生成菜单导航
+			var _html="";
+			$(".main-navigation").each(function(i){
+				var _this = $(this);
+				$(this).attr("id","navid_" + i);
+				_html += '<li>\
+					<a href="javascript:;" data-id="'+ i +'">'+ _this.attr("data-title") +'</a>\
+					<ul class="cmn-none">';
+					_this.find(".child-navigation").each(function(j){
+						$(this).attr("id","navid_"+ i + '_' + j);
+						_html +='<li>\
+									<a href="javascript:;" data-id="'+ i + '_' + j +'">'+ (j+1) + '. '+ $(this).attr("data-title") +'</a>\
+								</li>'
+					})
+				_html+='</ul>\
+				</li>';
+			});
+			$(".main-menu").html(_html);
+			$(document).on("click",".main-menu a",function(){
+				var _top = $("#navid_"+$(this).attr("data-id")).offset().top;
+				console.log($("#navid_"+$(this).attr("data-id")).offset().top)
+				$("html,body").stop().animate({
+					scrollTop:_top-10
+				})
+			});
+		
+		</script>
+	</body>
+</html>
