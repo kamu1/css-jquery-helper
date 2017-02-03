@@ -1,4 +1,7 @@
 @charset "UTF-8";
+.cmn-table li > div, .cmn-tableg li > div {
+  padding: 5px; }
+
 .main-menu {
   position: fixed;
   top: 0;
@@ -14,7 +17,7 @@
   overflow: auto;
   transform: translateX(95%);
   transition-duration: 600ms;
-  box-shadow: -1px 0 5px rgba(0, 0, 0, 0.5); }
+  box-shadow: 0px 0 10px rgba(0, 0, 0, 0.2); }
   .main-menu:after {
     content: "";
     border: 8px solid transparent;

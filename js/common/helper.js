@@ -506,7 +506,7 @@ var Helper = {
 		}
 	},
 	//激活快捷热键操作
-	hotKey:function(config){
+	hotKey:function(config,callback){
 		$(document).on("keydown",function(ev){
 			var _target = Helper.jQueryDom(config);
 			if (!_target || !_target.length){
@@ -925,14 +925,16 @@ var Helper = {
 					config.callback({
 						target:This,
 						focusTarget:_focused,
-						keyCode:kCode
+						keyCode:kCode,
+						key:ev.key
 					});
 				}else{
 					if (callback instanceof Function){
 						callback({
 							target:This,
 							focusTarget:_focused,
-							keyCode:kCode
+							keyCode:kCode,
+							key:ev.key
 						});
 					}
 				}
