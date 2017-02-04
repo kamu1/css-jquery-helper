@@ -10,6 +10,7 @@
 		<link rel="stylesheet" type="text/css" href="./css/common/demo.css" />
 		<!--jQuery 插件-->
 		<script src="./js/plugin/jquery/jquery.min.js"></script>
+		<!--<script src="//cdn.bootcss.com/jquery/1.9.1/jquery.min.js" type="text/javascript" charset="utf-8"></script>-->
 		<!--bootstrap 插件-->
 		<link rel="stylesheet" href="./js/plugin/bootstrap/bootstrap.min.css">
 		<script src="./js/plugin/bootstrap/bootstrap.min.js"></script>
@@ -22,10 +23,393 @@
 		<script src="./js/common/helper.js"></script>
 	</head>
 	<body>
-		<!--菜单导航-->
-		<ul class="main-menu cmn-none">
-		</ul>
 		<!--项目开始-->
+		<div class="main-navigation" data-title="Helper.js">
+			<div class="child-navigation J-child-navigation" data-title="tip：轻提示">
+				<input type="checkbox" />
+				<label></label>
+				<div>
+					<div>
+						<button class="demo-tip">示例：轻提示（默认居中）</button>
+						<button class="demo-tip" data-position="top">轻提示（顶部）</button>
+						<button class="demo-tip" data-position="right-top" data-maximum="3">轻提示（右上角<=3，连击）</button>
+					</div>
+					<div class="demo-code">Helper.tip("轻提示内容");
+Helper.tip("轻提示内容",5000);	//5秒消失
+Helper.tip("轻提示内容","top");	//顶部显示
+Helper.tip({
+	content:"轻提示内容",
+	time:5000,
+	position:"right-top",
+	maximum:3
+});</div>
+					<div class="demo-attr-list">
+						<ul class="cmn-table cmn-gray">
+							<li style="background: #f5f5f5;color: #000000;">
+								<div>属性</div>
+								<div>类型</div>
+								<div>默认值</div>
+								<div style="width:60%;">功能说明</div>
+							</li>
+							<li>
+								<div>content</div>
+								<div>string</div>
+								<div></div>
+								<div>轻提示内容（可以被第一个参数为字符串时取代）</div>
+							</li>
+							<li>
+								<div>time</div>
+								<div>number</div>
+								<div></div>
+								<div>停留时间（可以被第二个参数为数值时取代）</div>
+							</li>
+							<li>
+								<div>position</div>
+								<div>string</div>
+								<div></div>
+								<div>位置（第二、三个参数包含以下项可被取代）<br />top、bottom、left、right、left[right]-top、left[right]-bottom</div>
+							</li>
+							<li>
+								<div>maximum</div>
+								<div>number</div>
+								<div></div>
+								<div>最多个数(会去重复项)</div>
+							</li>
+							<li>
+								<div>zIndex</div>
+								<div>number</div>
+								<div></div>
+								<div>设置堆叠层级顺序</div>
+							</li>
+						</ul>
+					</div>
+				</div>
+				<script>
+					$(".demo-tip").on("click",function(){
+						var _position= $(this).attr("data-position");
+						var _maximum= Number($(this).attr("data-maximum"));
+							_maximum = _maximum ? _maximum : 1;
+						Helper.tip({
+							content:"轻提示内容"+new Date().getMilliseconds(),
+							position:_position,
+							maximum:_maximum,
+							zIndex:334
+						})
+					});
+				</script>
+			</div>
+			<div class="child-navigation J-child-navigation" data-title="hotKey：快捷热键功能">
+				<input type="checkbox" />
+				<label></label>
+				<div>
+					<div>
+						<button class="hot-key" data-hot-key="Ctrl+K">弹出轻提示(Ctrl+K)</button>
+						<button class="hot-key" data-hot-key="Ctrl+Alt+N">弹出轻提示(Ctrl+Alt+N)</button>
+						<div>通过设置：data-hot-key="Enter"（设置组合热键）；</div>
+						<div>通过设置：data-hotkey-trigger="dblclick keyup"（自定被激活的事件）</div>
+						<div>然后调用：Helper.hotKey("指定DOM对象");</div>
+					</div>
+					<div class="demo-code">&lt;button class="hot-key" data-hot-key="Ctrl+K"&gt;弹出轻提示(Ctrl+K)&lt;/button&gt;
+//监听所有热键对象
+Helper.hotKey();
+//或监听指定热键对象
+Helper.hotKey(".hot-key");
+<div style="opacity: .5;">//相关事件代码（默认click 或 focus）
+$(document).on("click",".hot-key",function(){
+    Helper.tip('轻提示(' + $(this).attr("data-hot-key") + ')');
+});</div></div>
+				</div>
+				<script type="text/javascript">
+					$(document).on("click",".hot-key",function(){
+						Helper.tip('轻提示(' + $(this).attr("data-hot-key") + ')');
+					});
+					Helper.hotKey();
+				</script>
+			</div>
+			<div class="child-navigation J-child-navigation" data-title="dialog：对话框">
+				<input type="checkbox" />
+				<label></label>
+				<div>
+					<div>
+						<button id="dialog-btn">示例：点我弹窗</button>
+					</div>
+					<div class="demo-code">Helper.dialog({
+    title:"操作提醒",
+    content:"确定操作吗？",
+    exit:true,
+    buttons:{
+        "取消":function(){
+            $(this).remove();
+        },
+        "确定":{
+            hotKey:"Enter",
+            method:function(){
+                Helper.tip("操作成功");
+                $(this).remove();
+            }
+        }
+    }
+});</div>
+					<div class="demo-attr-list">
+						<ul class="cmn-table cmn-gray">
+							<li style="background: #f5f5f5;color: #000000;">
+								<div>属性</div>
+								<div>类型</div>
+								<div>默认值</div>
+								<div style="width:60%;">功能说明</div>
+							</li>
+							<li>
+								<div>content</div>
+								<div>string</div>
+								<div></div>
+								<div>弹窗内容</div>
+							</li>
+							<li>
+								<div>title</div>
+								<div>string</div>
+								<div></div>
+								<div>弹窗标题</div>
+							</li>
+							<li>
+								<div>exit</div>
+								<div>boolean</div>
+								<div>false</div>
+								<div>默认关闭弹窗按钮</div>
+							</li>
+							<li>
+								<div>opacity</div>
+								<div>number</div>
+								<div>0.2</div>
+								<div>遮罩层透明度：0至1</div>
+							</li>
+							<li>
+								<div>overlayClose</div>
+								<div>boolean</div>
+								<div>false</div>
+								<div>点击遮罩层关闭弹窗</div>
+							</li>
+							<li>
+								<div>className</div>
+								<div>string</div>
+								<div></div>
+								<div>新增自定义class</div>
+							</li>
+							<li>
+								<div>attr</div>
+								<div>object</div>
+								<div>{}</div>
+								<div>新增自定义属性，如：{"title":"标题"}</div>
+							</li>
+							<li>
+								<div>style</div>
+								<div>object</div>
+								<div>{}</div>
+								<div>弹窗内容块样式，如：{"color":"#999999"}</div>
+							</li>
+							<li>
+								<div>dialogStyle</div>
+								<div>object</div>
+								<div>{}</div>
+								<div>自定义弹窗容器样式</div>
+							</li>
+							<li>
+								<div>overlay</div>
+								<div>object</div>
+								<div>{}</div>
+								<div>覆盖层样式，如：{"background":"rgba(255,255,255,.5)"}</div>
+							</li>
+							<li>
+								<div>time</div>
+								<div>number</div>
+								<div></div>
+								<div>以毫秒定时关闭弹窗</div>
+							</li>
+							<li>
+								<div>zIndex</div>
+								<div>number</div>
+								<div></div>
+								<div>设置堆叠层级顺序</div>
+							</li>
+							<li>
+								<div>buttons</div>
+								<div>object</div>
+								<div></div>
+								<div>
+									<div class="demo-code">按钮组，代码如下：
+方式1：{"确定":function(){ }}
+方式2：
+{"确定":{
+    className:"cla1 cla2",	//添加class
+    style:{"color","red"},		//添加样式
+    attr:{"data-*":""},			//添加属性值
+    hotKey:"Ctrl+H",			//设置热键(也可通过attr属性来设置)
+    method:function(){ }		//执行函数
+}}</div>
+								</div>
+							</li>
+						</ul>
+					</div>
+				</div>
+				<script>
+				$("#dialog-btn").on("click",function(){
+					Helper.dialog({
+						title:"操作提醒",
+						content:"确定操作吗？",
+						exit:true,
+						zIndex:223,
+						buttons:{
+							"取消":function(){
+								$(this).remove();
+							},
+							"确定":{
+								hotKey:"Enter",
+								method:function(){
+									Helper.tip("操作成功");
+									$(this).remove();
+								}
+							}
+						}
+					})
+				})
+				</script>
+			</div>
+			<div class="child-navigation J-child-navigation" data-title="focusMove：方向键移动焦点">
+				<input type="checkbox" />
+				<label></label>
+				<div>
+					<div>
+						<div>激活文本框，按方向键查看效果</div>
+						<ul class="cmn-table demo-focusMove" style="text-align: center;">
+							<li>
+								<div><input type="text" /></div>
+								<div><input type="text" /></div>
+								<div><input type="text" /></div>
+							</li>
+							<li>
+								<div><input type="text" /></div>
+								<div><input type="text" /></div>
+								<div><input type="text" disabled="" /></div>
+							</li>
+							<li>
+								<div><input type="text" /></div>
+								<div><input type="text" /></div>
+								<div><input type="text" /></div>
+							</li>
+						</ul>
+					</div>
+					<div class="demo-code">&lt;ul class="cmn-table demo-focusMove"&gt;
+    &lt;li&gt;
+        &lt;div&gt;&lt;input type="text" /&gt;&lt;/div&gt;
+        &lt;div&gt;&lt;input type="text" /&gt;&lt;/div&gt;
+        &lt;div&gt;&lt;input type="text" /&gt;&lt;/div&gt;
+    &lt;/li&gt;
+    &lt;li&gt;
+        &lt;div&gt;&lt;input type="text" /&gt;&lt;/div&gt;
+        &lt;div&gt;&lt;input type="text" /&gt;&lt;/div&gt;
+        &lt;div&gt;&lt;input type="text" disabled="" /&gt;&lt;/div&gt;
+    &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;script&gt;
+Helper.focusMove({
+    target: '.demo-focusMove',
+    rowLabel:"li",
+    cellLabel:"div",
+    inputLabel: 'input:enabled',
+    visualPosition: true,
+    minTop: 0,
+    minBottom: 200,
+    callback:function(obj){
+        //...
+    }
+});
+&lt;/script&gt;</div>
+					<div class="demo-attr-list">
+						<ul class="cmn-table cmn-gray">
+							<li style="background: #f5f5f5;color: #000000;">
+								<div>属性</div>
+								<div>类型</div>
+								<div>默认值</div>
+								<div style="width:60%;">功能说明</div>
+							</li>
+							<li>
+								<div>target</div>
+								<div>string || DOM对象</div>
+								<div></div>
+								<div>焦点区域对象</div>
+							</li>
+							<li>
+								<div>rowLabel</div>
+								<div>string</div>
+								<div>tr</div>
+								<div>行标签名（target是table时可省略）</div>
+							</li>
+							<li>
+								<div>cellLabel</div>
+								<div>string</div>
+								<div>td</div>
+								<div>单元格标签名（target是table时可省略）</div>
+							</li>
+							<li>
+								<div>inputLabel</div>
+								<div>string</div>
+								<div>input:enabled</div>
+								<div>焦点对象（默认可省略...）</div>
+							</li>
+							<li>
+								<div>visualPosition</div>
+								<div>boolean</div>
+								<div>false</div>
+								<div>是否开启视觉定位(位置不规则时很有用)</div>
+							</li>
+							<li>
+								<div>minTop</div>
+								<div>number</div>
+								<div>0</div>
+								<div>至少隔顶部位置（防止被浮动层挡住）</div>
+							</li>
+							<li>
+								<div>minBottom</div>
+								<div>string</div>
+								<div>0</div>
+								<div>至少隔底部位置（防止被浮动层挡住）</div>
+							</li>
+							<li>
+								<div>callback</div>
+								<div>Function</div>
+								<div></div>
+								<div>回调函数：返回弹窗对象、焦点对象、按键ascii码、按键代码</div>
+							</li>
+						</ul>
+					</div>
+				</div>
+				<script>
+					// 上下左右键控制输入框
+					Helper.focusMove({
+					    target: '.demo-focusMove',
+					    rowLabel:"li",
+					    cellLabel:"div",
+					    minTop: 0,
+					    minBottom: 200,
+					    visualPosition: true,
+					    inputLabel: 'input:enabled',
+					    callback:function(obj){
+					    	//...
+					    }
+					});
+				</script>
+			</div>
+			<!--<div class="child-navigation J-child-navigation" data-title="补充文本内容">
+				<input type="checkbox" />
+				<label></label>
+				<div>
+					<div>
+						
+					</div>
+					<div class="demo-code"></div>
+				</div>
+			</div>-->
+		</div>
 		<div class="main-navigation" data-title="common.css">
 			<div class="child-navigation J-child-navigation" data-title="内置margin值">
 				<div>
@@ -827,392 +1211,9 @@ body label input.cmn-checkbox[type=radio]:disabled:checked + s { background-imag
 				</div>
 			</div>-->
 		</div>
-		<div class="main-navigation" data-title="Helper.js">
-			<div class="child-navigation J-child-navigation" data-title="tip：轻提示">
-				<input type="checkbox" />
-				<label></label>
-				<div>
-					<div>
-						<button class="demo-tip">示例：轻提示（默认居中）</button>
-						<button class="demo-tip" data-position="top">轻提示（顶部）</button>
-						<button class="demo-tip" data-position="right-top" data-maximum="3">轻提示（右上角<=3，连击）</button>
-					</div>
-					<div class="demo-code">Helper.tip("轻提示内容");
-Helper.tip("轻提示内容",5000);	//5秒消失
-Helper.tip("轻提示内容","top");	//顶部显示
-Helper.tip({
-	content:"轻提示内容",
-	time:5000,
-	position:"right-top",
-	maximum:3
-});</div>
-					<div class="demo-attr-list">
-						<ul class="cmn-table cmn-gray">
-							<li style="background: #f5f5f5;color: #000000;">
-								<div>属性</div>
-								<div>类型</div>
-								<div>默认值</div>
-								<div style="width:60%;">功能说明</div>
-							</li>
-							<li>
-								<div>content</div>
-								<div>string</div>
-								<div></div>
-								<div>轻提示内容（可以被第一个参数为字符串时取代）</div>
-							</li>
-							<li>
-								<div>time</div>
-								<div>number</div>
-								<div></div>
-								<div>停留时间（可以被第二个参数为数值时取代）</div>
-							</li>
-							<li>
-								<div>position</div>
-								<div>string</div>
-								<div></div>
-								<div>位置（第二、三个参数包含以下项可被取代）<br />top、bottom、left、right、left[right]-top、left[right]-bottom</div>
-							</li>
-							<li>
-								<div>maximum</div>
-								<div>number</div>
-								<div></div>
-								<div>最多个数(会去重复项)</div>
-							</li>
-							<li>
-								<div>zIndex</div>
-								<div>number</div>
-								<div></div>
-								<div>设置堆叠层级顺序</div>
-							</li>
-						</ul>
-					</div>
-				</div>
-				<script>
-					$(".demo-tip").on("click",function(){
-						var _position= $(this).attr("data-position");
-						var _maximum= Number($(this).attr("data-maximum"));
-							_maximum = _maximum ? _maximum : 1;
-						Helper.tip({
-							content:"轻提示内容"+new Date().getMilliseconds(),
-							position:_position,
-							maximum:_maximum,
-							zIndex:334
-						})
-					});
-				</script>
-			</div>
-			<div class="child-navigation J-child-navigation" data-title="hotKey：快捷热键功能">
-				<input type="checkbox" />
-				<label></label>
-				<div>
-					<div>
-						<button class="hot-key" data-hot-key="Ctrl+K">弹出轻提示(Ctrl+K)</button>
-						<button class="hot-key" data-hot-key="Ctrl+Alt+N">弹出轻提示(Ctrl+Alt+N)</button>
-						<div>通过设置：data-hot-key="Enter"（设置组合热键）；</div>
-						<div>通过设置：data-hotkey-trigger="dblclick keyup"（自定被激活的事件）</div>
-						<div>然后调用：Helper.hotKey("指定DOM对象");</div>
-					</div>
-					<div class="demo-code">&lt;button class="hot-key" data-hot-key="Ctrl+K"&gt;弹出轻提示(Ctrl+K)&lt;/button&gt;
-//监听所有热键对象
-Helper.hotKey();
-//或监听指定热键对象
-Helper.hotKey(".hot-key");
-<div style="opacity: .5;">//相关事件代码（默认click 和 focus）
-$(document).on("click",".hot-key",function(){
-    Helper.tip('轻提示(' + $(this).attr("data-hot-key") + ')');
-});</div></div>
-				</div>
-				<script type="text/javascript">
-					$(document).on("click",".hot-key",function(){
-						Helper.tip('轻提示(' + $(this).attr("data-hot-key") + ')');
-					});
-					Helper.hotKey();
-				</script>
-			</div>
-			<div class="child-navigation J-child-navigation" data-title="dialog：对话框">
-				<input type="checkbox" />
-				<label></label>
-				<div>
-					<div>
-						<button id="dialog-btn">示例：点我弹窗</button>
-					</div>
-					<div class="demo-code">Helper.dialog({
-    title:"操作提醒",
-    content:"确定操作吗？",
-    exit:true,
-    buttons:{
-        "取消":function(){
-            $(this).remove();
-        },
-        "确定":{
-            hotKey:"Enter",
-            method:function(){
-                Helper.tip("操作成功");
-                $(this).remove();
-            }
-        }
-    }
-});</div>
-					<div class="demo-attr-list">
-						<ul class="cmn-table cmn-gray">
-							<li style="background: #f5f5f5;color: #000000;">
-								<div>属性</div>
-								<div>类型</div>
-								<div>默认值</div>
-								<div style="width:60%;">功能说明</div>
-							</li>
-							<li>
-								<div>content</div>
-								<div>string</div>
-								<div></div>
-								<div>弹窗内容</div>
-							</li>
-							<li>
-								<div>title</div>
-								<div>string</div>
-								<div></div>
-								<div>弹窗标题</div>
-							</li>
-							<li>
-								<div>exit</div>
-								<div>boolean</div>
-								<div>false</div>
-								<div>默认关闭弹窗按钮</div>
-							</li>
-							<li>
-								<div>opacity</div>
-								<div>number</div>
-								<div>0.2</div>
-								<div>遮罩层透明度：0至1</div>
-							</li>
-							<li>
-								<div>overlayClose</div>
-								<div>boolean</div>
-								<div>false</div>
-								<div>点击遮罩层关闭弹窗</div>
-							</li>
-							<li>
-								<div>className</div>
-								<div>string</div>
-								<div></div>
-								<div>新增自定义class</div>
-							</li>
-							<li>
-								<div>attr</div>
-								<div>object</div>
-								<div>{}</div>
-								<div>新增自定义属性，如：{"title":"标题"}</div>
-							</li>
-							<li>
-								<div>style</div>
-								<div>object</div>
-								<div>{}</div>
-								<div>弹窗内容块样式，如：{"color":"#999999"}</div>
-							</li>
-							<li>
-								<div>dialogStyle</div>
-								<div>object</div>
-								<div>{}</div>
-								<div>自定义弹窗容器样式</div>
-							</li>
-							<li>
-								<div>overlay</div>
-								<div>object</div>
-								<div>{}</div>
-								<div>覆盖层样式，如：{"background":"rgba(255,255,255,.5)"}</div>
-							</li>
-							<li>
-								<div>time</div>
-								<div>number</div>
-								<div></div>
-								<div>以毫秒定时关闭弹窗</div>
-							</li>
-							<li>
-								<div>zIndex</div>
-								<div>number</div>
-								<div></div>
-								<div>设置堆叠层级顺序</div>
-							</li>
-							<li>
-								<div>buttons</div>
-								<div>object</div>
-								<div></div>
-								<div>
-									<div class="demo-code">按钮组，代码如下：
-方式1：{"确定":function(){ }}
-方式2：
-{"确定":{
-    className:"cla1 cla2",	//添加class
-    style:{"color","red"},		//添加样式
-    attr:{"data-*":""},			//添加属性值
-    hotKey:"Ctrl+H",			//设置热键(也可通过attr属性来设置)
-    method:function(){ }		//执行函数
-}}</div>
-								</div>
-							</li>
-						</ul>
-					</div>
-				</div>
-				<script>
-				$("#dialog-btn").on("click",function(){
-					Helper.dialog({
-						title:"操作提醒",
-						content:"确定操作吗？",
-						exit:true,
-						zIndex:223,
-						buttons:{
-							"取消":function(){
-								$(this).remove();
-							},
-							"确定":{
-								hotKey:"Enter",
-								method:function(){
-									Helper.tip("操作成功");
-									$(this).remove();
-								}
-							}
-						}
-					})
-				})
-				</script>
-			</div>
-			<div class="child-navigation J-child-navigation" data-title="方向键移动焦点">
-				<input type="checkbox" />
-				<label></label>
-				<div>
-					<div>
-						<div>激活文本框，按方向键查看效果</div>
-						<ul class="cmn-table demo-focusMove" style="text-align: center;">
-							<li>
-								<div><input type="text" /></div>
-								<div><input type="text" /></div>
-								<div><input type="text" /></div>
-							</li>
-							<li>
-								<div><input type="text" /></div>
-								<div><input type="text" /></div>
-								<div><input type="text" disabled="" /></div>
-							</li>
-							<li>
-								<div><input type="text" /></div>
-								<div><input type="text" /></div>
-								<div><input type="text" /></div>
-							</li>
-						</ul>
-					</div>
-					<div class="demo-code">&lt;ul class="cmn-table demo-focusMove"&gt;
-    &lt;li&gt;
-        &lt;div&gt;&lt;input type="text" /&gt;&lt;/div&gt;
-        &lt;div&gt;&lt;input type="text" /&gt;&lt;/div&gt;
-        &lt;div&gt;&lt;input type="text" /&gt;&lt;/div&gt;
-    &lt;/li&gt;
-    &lt;li&gt;
-        &lt;div&gt;&lt;input type="text" /&gt;&lt;/div&gt;
-        &lt;div&gt;&lt;input type="text" /&gt;&lt;/div&gt;
-        &lt;div&gt;&lt;input type="text" disabled="" /&gt;&lt;/div&gt;
-    &lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;script&gt;
-Helper.focusMove({
-    target: '.demo-focusMove',
-    rowLabel:"li",
-    cellLabel:"div",
-    inputLabel: 'input:enabled',
-    visualPosition: true,
-    minTop: 0,
-    minBottom: 200,
-    callback:function(obj){
-        //...
-    }
-});
-&lt;/script&gt;</div>
-					<div class="demo-attr-list">
-						<ul class="cmn-table cmn-gray">
-							<li style="background: #f5f5f5;color: #000000;">
-								<div>属性</div>
-								<div>类型</div>
-								<div>默认值</div>
-								<div style="width:60%;">功能说明</div>
-							</li>
-							<li>
-								<div>target</div>
-								<div>string || DOM对象</div>
-								<div></div>
-								<div>焦点区域对象</div>
-							</li>
-							<li>
-								<div>rowLabel</div>
-								<div>string</div>
-								<div>tr</div>
-								<div>行标签名（target是table时可省略）</div>
-							</li>
-							<li>
-								<div>cellLabel</div>
-								<div>string</div>
-								<div>td</div>
-								<div>单元格标签名（target是table时可省略）</div>
-							</li>
-							<li>
-								<div>inputLabel</div>
-								<div>string</div>
-								<div>input:enabled</div>
-								<div>焦点对象（默认可省略...）</div>
-							</li>
-							<li>
-								<div>visualPosition</div>
-								<div>boolean</div>
-								<div>false</div>
-								<div>是否开启视觉定位(位置不规则时很有用)</div>
-							</li>
-							<li>
-								<div>minTop</div>
-								<div>number</div>
-								<div>0</div>
-								<div>至少隔顶部位置（防止被浮动层挡住）</div>
-							</li>
-							<li>
-								<div>minBottom</div>
-								<div>string</div>
-								<div>0</div>
-								<div>至少隔底部位置（防止被浮动层挡住）</div>
-							</li>
-							<li>
-								<div>callback</div>
-								<div>Function</div>
-								<div></div>
-								<div>回调函数：返回弹窗对象、焦点对象、按键ascii码、按键代码</div>
-							</li>
-						</ul>
-					</div>
-				</div>
-				<script>
-					// 上下左右键控制输入框
-					Helper.focusMove({
-					    target: '.demo-focusMove',
-					    rowLabel:"li",
-					    cellLabel:"div",
-					    minTop: 0,
-					    minBottom: 200,
-					    visualPosition: true,
-					    inputLabel: 'input:enabled',
-					    callback:function(obj){
-					    	//...
-					    }
-					});
-				</script>
-			</div>
-			<!--<div class="child-navigation J-child-navigation" data-title="补充文本内容">
-				<input type="checkbox" />
-				<label></label>
-				<div>
-					<div>
-						
-					</div>
-					<div class="demo-code"></div>
-				</div>
-			</div>-->
-		</div>
+		<!--菜单导航-->
+		<ul class="main-menu cmn-none">
+		</ul>
 		<script type="text/javascript">
 			$(".J-child-navigation>input[type=checkbox]").each(function(i){
 				$(this).attr("id","id_"+i).next("label").attr("for","id_"+i);
@@ -1237,7 +1238,6 @@ Helper.focusMove({
 			$(".main-menu").html(_html);
 			$(document).on("click",".main-menu a",function(){
 				var _top = $("#navid_"+$(this).attr("data-id")).offset().top;
-				console.log($("#navid_"+$(this).attr("data-id")).offset().top)
 				$("html,body").stop().animate({
 					scrollTop:_top-10
 				})

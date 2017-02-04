@@ -61,9 +61,8 @@ img {
 
 a[href] {
   color: #333333; }
-  a[href]:hover {
-    color: #B4A078; }
-  a[href]:hover, a[href].active, a[href].focus {
+  a[href]:hover, a[href]:active, a[href]:focus {
+    color: #B4A078;
     text-decoration: none !important; }
 
 input::-webkit-outer-spin-button,

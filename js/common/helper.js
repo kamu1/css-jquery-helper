@@ -546,6 +546,7 @@ var Helper = {
 								var k = 0;
 								_keys.forEach(function(item,i){
 									item = item.trim().toLowerCase();	//去除空格并转成小写
+									_keys[i]=item;		//重写_keys值为小写
 									//如果有简写键值,转换并重新赋值,再做比较
 									if (_shorthand[item]){
 										item = _shorthand[item].toLowerCase();
@@ -556,8 +557,14 @@ var Helper = {
 									//将所有的热键值保存起来用作判断
 									_keyAll.push(item);
 								});
+								//判断未设置功能键是否被按住,若按住,则停止,防止如:Ctrl+K和Ctrl+Alt+K时的冲突
+								["ctrl","alt","shift"].forEach(function(itm){
+									if (ev[itm + 'Key'] == true && _keys.indexOf(itm)<0){
+										k=0;
+									}
+								});
 								//若热键数量满足,则激活焦点并执行单击事件
-								if (k == _keys.length){
+								if (k && k == _keys.length){
 									_hotKeyObj.push(_this);
 								}
 							}
@@ -572,7 +579,11 @@ var Helper = {
 								})
 							}else{
 								//热键触发默认事件
-								_obj.focus().trigger("click");
+								if (["input","textarea"].indexOf(_obj[0].tagName.toLocaleLowerCase())>=0){
+									_obj.focus();
+								}else{
+									_obj.trigger("click");
+								}
 							}
 						}
 					}

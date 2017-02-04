@@ -32,10 +32,8 @@ img{
 }
 a[href]{
     color: $mainBlack;
-    &:hover{
+    &:hover,&:active,&:focus{
         color:$mainGold;
-    }
-    &:hover,&.active,&.focus{
         text-decoration: none !important;
     }
 }
