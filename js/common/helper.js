@@ -1,3 +1,4 @@
+var _Element = window.HTMLElement || window.Element
 var Helper = {
 	//下拉列表选择框
 	/*selectBox:function(config,callback){
@@ -75,7 +76,7 @@ var Helper = {
 		}else{
 			_obj = config;
 		}
-		if (typeof(_obj)=="string" || _obj instanceof HTMLElement){
+		if (typeof(_obj)=="string" || _obj instanceof _Element){
 			_obj = $(_obj);
 		}
 		var _style={};
@@ -270,7 +271,7 @@ var Helper = {
 	//回到顶部
 	totop:function(obj,style){
 		var _obj;
-		if (typeof(obj) == "string" || obj instanceof HTMLElement){
+		if (typeof(obj) == "string" || obj instanceof _Element){
 			obj=$(obj);
 		}
 		_obj=obj;
@@ -304,11 +305,11 @@ var Helper = {
 			_time = config["time"];
 		};
 		//如果传的是字符串名或原生DOM对象，则通过jquery包装一下
-		if (typeof(config) == "string" || config instanceof HTMLElement){
+		if (typeof(config) == "string" || config instanceof _Element){
 			_obj = $(config);
 		//如果传入的是对象，则读target及x和y属性值
 		}else if(config instanceof Object){
-			if (config.target && (typeof(config.target) == "string" || config.target instanceof HTMLElement)){
+			if (config.target && (typeof(config.target) == "string" || config.target instanceof _Element)){
 				_obj = $(config.target);
 			}
 			if (config["x"] && typeof(config["x"]) == "number"){
@@ -666,9 +667,9 @@ var Helper = {
     //转换成jQueryDOM对象
     jQueryDom:function(obj){
     	var _obj = obj;
-    	if (typeof(obj)=="string" || obj instanceof HTMLElement){
+    	if (typeof(obj)=="string" ||  obj instanceof _Element){
     		_obj = $(obj); 
-    	}else if (obj && obj.target && (typeof(obj.target)=="string" || obj.target instanceof HTMLElement)){
+    	}else if (obj && obj.target && (typeof(obj.target)=="string" || obj.target instanceof _Element)){
     		_obj = $(obj.target); 
     	}else if(obj && obj.target && obj.target instanceof jQuery){
     		_obj = obj.target;
@@ -684,11 +685,11 @@ var Helper = {
     	//需传入的{}键值
     	//{target,rowLabel,cellLabel,inputLabel,minTop,minBottom};
     	var _block;
-    	if (typeof(config) == "string" || config instanceof HTMLElement){
+    	if (typeof(config) == "string" || config instanceof _Element){
     		_block = $(config);
     	}else if (config instanceof jQuery){
     		_block = config;
-    	}else if (config && (typeof(config.target) == "string" || config.target instanceof HTMLElement)){
+    	}else if (config && (typeof(config.target) == "string" || config.target instanceof _Element)){
 			_block = $(config.target);
 		}
 		var arr = [];
@@ -964,4 +965,50 @@ var Helper = {
 			}
 		});
 	},
+	//使用table布局框架时,开启某块td下可滚动或者使iframe以100%的尺寸显示(特别是IE10以下td无CSS尺寸高时有效)
+	percentHeight:function(config,arg2){
+		var _obj=Helper.jQueryDom(config);
+		if (!_obj || !_obj.length){
+			_obj = $("table td[percent-height]>*");
+			//若对象不存在,且第一个参数是对象且第二个参数不存在时,将第一个作为样式传递;
+			if (!arg2 && config instanceof Object){
+				arg2 = config;
+			}
+		}
+		var _style={height:"100%",overflow:"auto"};
+		//重写自定义的样式,默认保留height为100%
+		if (arg2 && arg2 instanceof Object){
+			_style={height:"100%"};
+			for (var Key in arg2){
+				_style[Key] = arg2[Key];
+			}
+		}
+		_obj.css(_style);
+		if (Helper.IE()<=10){
+			_obj.hide()
+		}
+		_obj.each(function(){
+				$(this).height($(this).parent().height());
+			})
+			.children("iframe").css({width:"100%",height:"100%",border:"none"})
+			.parent().css({"overflow":"hidden"});
+		_obj.show();
+	},
+	//判断IE版本
+	IE:function IE(){
+		var IE="Microsoft Internet Explorer";
+		var b=navigator.appName;
+		if (b!=IE) {return 99;return false;}
+		var b_v=navigator.appVersion; 
+		var v=b_v.split(";");
+		var V=v[1].replace(/[ ]/g,"");
+		if (b==IE){
+			if(V=="MSIE6.0") {return 6;}
+			else if(V=="MSIE7.0") {return 7;}
+			else if(V=="MSIE8.0") {return 8;}
+			else if(V=="MSIE9.0"){return 9;} 
+			else if(V=="MSIE10.0"){return 10;} 
+			else{return 99;} 
+		}
+	}
 }

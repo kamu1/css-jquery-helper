@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<link rel="stylesheet" type="text/css" href="./css/common/common.css" />
+		<script src="./js/plugin/polyfill/polyfill.min.js"></script>
+		<script src="./js/plugin/jquery/jquery.min.js"></script>
+		<script src="./js/common/helper.js"></script>
+		<title>table</title>
+		<style type="text/css">
+			html,body{
+				overflow: hidden;
+			}
+			table{
+				border-spacing:0;
+				border-collapse: collapse;
+			}
+			.table-iframe{
+				height:100%;
+			}
+			.table-iframe .c-logo{
+				width:260px;
+				height: 100px;
+			}
+			.table-iframe .c-footer{
+				height: 100px;
+			}
+			.table-iframe .c-goods-info{
+				height: 100px;
+			}
+			.table-iframe .c-list{
+				height: 100%;
+				overflow: auto;
+			}
+			.table-iframe .c-list >*{
+				height: 130%;
+				width:150%;
+			}
+		</style>
+	</head>
+
+	<body>
+		<table class="table-iframe" border="1" width="100%">
+			<tr>
+				<td class="c-logo">　</td>
+				<td>　</td>
+			</tr>
+			<tr>
+				<td rowspan="3" class="c-order-info" percent-height>
+					<div>
+						<iframe src="./demo.html" width="100%" height="100%"></iframe>
+					</div>
+				</td>
+				<td class="c-goods-info">2　</td>
+			</tr>
+			<tr>
+				<td percent-height>
+					<div class="c-list J-container">
+						<div>
+							
+						</div>
+					</div>
+				</td>
+			</tr>
+			<tr>
+				<td class="c-footer">　</td>
+			</tr>
+		</table>
+
+	</body>
+<script type="text/javascript">
+	$(window).on("load resize",function(){
+		Helper.percentHeight();
+	});
+</script>
+</html>
